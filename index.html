@@ -1,0 +1,1804 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aleyna Tanık — Portföy</title>
+  <meta name="description" content="Aleyna Tanık — Yazılım Mühendisliği öğrencisi portföy sitesi." />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Cormorant+Garamond:ital,wght@0,600;0,700;1,500;1,600&family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cream: '#fdfbf7',
+            paper: '#f5f2eb',
+            burn: '#ff69b4',
+            burndeep: '#e05295',
+            ink: '#1a1a1a',
+            fume: '#2d2d2d',
+          },
+          fontFamily: {
+            hand: ['Caveat', 'cursive'],
+            cover: ['Cormorant Garamond', 'Georgia', 'serif'],
+            serif: ['Playfair Display', 'Georgia', 'serif'],
+            sans: ['DM Sans', 'system-ui', 'sans-serif'],
+          },
+          boxShadow: {
+            scrap: '4px 6px 0 rgba(26,26,26,0.12), 8px 12px 24px rgba(224,82,149,0.15)',
+            scraplg: '6px 8px 0 rgba(26,26,26,0.14), 12px 18px 36px rgba(224,82,149,0.2)',
+            tape: 'inset 0 -2px 0 rgba(255,255,255,0.4)',
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+
+    section[id],
+    header[id] {
+      scroll-margin-top: 5.5rem;
+    }
+
+    body {
+      background-color: #fdfbf7;
+      background-image:
+        radial-gradient(circle at 20% 30%, rgba(255, 105, 180, 0.06) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(224, 82, 149, 0.05) 0%, transparent 45%),
+        url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23e05295' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    .scrap-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .scrap-card:hover {
+      transform: rotate(0deg) scale(1.02) !important;
+      box-shadow: 6px 10px 0 rgba(26,26,26,0.16), 14px 22px 40px rgba(224,82,149,0.25);
+    }
+
+    .tape {
+      position: absolute;
+      width: 80px;
+      height: 28px;
+      background: rgba(255, 255, 220, 0.65);
+      border: 1px solid rgba(0,0,0,0.06);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+      transform: rotate(-2deg);
+      z-index: 10;
+    }
+
+    .burn-stamp {
+      border: 3px solid #e05295;
+      color: #e05295;
+      transform: rotate(-8deg);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-family: 'Caveat', cursive;
+      font-weight: 700;
+      font-size: 1.1rem;
+      padding: 0.25rem 0.75rem;
+      display: inline-block;
+      opacity: 0.85;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #ff69b4;
+      transition: width 0.25s ease;
+    }
+    .nav-link:hover::after { width: 100%; }
+
+    @keyframes wiggle {
+      0%, 100% { transform: rotate(-1.5deg); }
+      50% { transform: rotate(1.5deg); }
+    }
+    .wiggle:hover { animation: wiggle 0.4s ease-in-out; }
+
+    .polaroid {
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+    .polaroid:hover {
+      transform: rotate(0deg) scale(1.03) !important;
+      box-shadow: 0 25px 50px -12px rgba(224, 82, 149, 0.35), 0 12px 24px rgba(26, 26, 26, 0.12);
+    }
+
+    .paperclip {
+      position: absolute;
+      top: -6px;
+      right: 28px;
+      width: 22px;
+      height: 52px;
+      z-index: 20;
+      filter: drop-shadow(1px 2px 2px rgba(0,0,0,0.18));
+      pointer-events: none;
+    }
+
+    .paper-strip {
+      display: inline-block;
+      background: #fff;
+      color: #1a1a1a;
+      font-weight: 500;
+      font-size: 0.95rem;
+      padding: 0.45rem 1rem;
+      border: 1px solid rgba(26, 26, 26, 0.08);
+      box-shadow: 3px 4px 0 rgba(26, 26, 26, 0.1);
+      transform: rotate(var(--strip-rotate, -0.6deg));
+    }
+
+    .scrap-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 2.75rem;
+      height: 2.75rem;
+      padding: 0 0.85rem;
+      background: #fff;
+      border: 2px solid #1a1a1a;
+      color: #1a1a1a;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      box-shadow: 3px 3px 0 rgba(224, 82, 149, 0.25);
+      transition: transform 0.2s, background 0.2s, color 0.2s;
+    }
+    .scrap-btn:hover {
+      background: #ff69b4;
+      color: #fff;
+      border-color: #e05295;
+      transform: translateY(-2px);
+    }
+
+    .ransom-title {
+      mix-blend-mode: multiply;
+      filter: drop-shadow(2px 4px 6px rgba(26, 26, 26, 0.12));
+    }
+
+    .project-grid-pink {
+      background-color: #fce8f0;
+      background-image:
+        linear-gradient(rgba(224, 82, 149, 0.14) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(224, 82, 149, 0.14) 1px, transparent 1px);
+      background-size: 22px 22px;
+    }
+
+    .project-grid-neutral {
+      background-color: #faf8f5;
+      background-image:
+        linear-gradient(rgba(26, 26, 26, 0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(26, 26, 26, 0.07) 1px, transparent 1px);
+      background-size: 22px 22px;
+    }
+
+    .project-badge {
+      position: absolute;
+      background: #fff;
+      border: 1.5px solid #1a1a1a;
+      color: #1a1a1a;
+      font-size: 0.625rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      padding: 0.3rem 0.6rem;
+      text-transform: uppercase;
+      z-index: 10;
+    }
+
+    .project-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      border: 1.5px solid #1a1a1a;
+      background: #fff;
+      color: #1a1a1a;
+      padding: 0.5rem 0.9rem;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      transition: background 0.2s, color 0.2s;
+    }
+    .project-btn:hover {
+      background: #1a1a1a;
+      color: #fff;
+    }
+
+    .project-card {
+      border: 3px solid #1a1a1a;
+      box-shadow: 5px 5px 0 rgba(26, 26, 26, 0.9);
+    }
+
+    .skill-badge {
+      display: inline-block;
+      background: #fff;
+      border: 1.5px solid #1a1a1a;
+      color: #1a1a1a;
+      font-size: 0.625rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      padding: 0.3rem 0.55rem;
+      white-space: nowrap;
+    }
+
+    .skills-sticker-zone {
+      position: relative;
+    }
+
+    .skills-sticker-hint {
+      font-family: 'Caveat', cursive;
+      font-size: 1rem;
+      color: rgba(224, 82, 149, 0.85);
+      margin-bottom: 0.85rem;
+      transform: rotate(-1deg);
+    }
+
+    .skills-sticker-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 0.65rem;
+      padding: 1.25rem 1.35rem;
+      background: #fff;
+      border: 3px solid #1a1a1a;
+      box-shadow: 5px 5px 0 rgba(26, 26, 26, 0.9);
+    }
+
+    .skill-sticker {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #fdfbf7;
+      border: 2px solid #1a1a1a;
+      color: #1a1a1a;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      padding: 0.38rem 0.7rem;
+      white-space: nowrap;
+      cursor: pointer;
+      transform: rotate(var(--sticker-rotate, 0deg));
+      box-shadow: 2px 2px 0 rgba(224, 82, 149, 0.45);
+      transition: background 0.2s, color 0.2s, transform 0.2s;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .skill-sticker:hover,
+    .skill-sticker.is-active {
+      background: #ff69b4;
+      color: #fff;
+      border-color: #1a1a1a;
+    }
+
+    .skill-sticker.is-active {
+      box-shadow: 3px 3px 0 rgba(26, 26, 26, 0.85);
+    }
+
+    @keyframes skill-wiggle {
+      0%, 100% { transform: rotate(var(--sticker-rotate, 0deg)) translateY(0); }
+      25% { transform: rotate(calc(var(--sticker-rotate, 0deg) + 3deg)) translateY(-2px); }
+      75% { transform: rotate(calc(var(--sticker-rotate, 0deg) - 3deg)) translateY(-1px); }
+    }
+
+    .skill-sticker:hover {
+      animation: skill-wiggle 0.45s ease-in-out;
+    }
+
+    .skill-sticker--pink {
+      background: #fce8f0;
+    }
+
+    .skill-sticker--paper {
+      background: #f5f2eb;
+    }
+
+    .skill-tip {
+      position: fixed;
+      z-index: 200;
+      max-width: min(18.5rem, calc(100vw - 2rem));
+      padding: 0.85rem 1rem 0.9rem;
+      background: #fdfbf7;
+      border: 3px solid #1a1a1a;
+      box-shadow: 4px 4px 0 rgba(26, 26, 26, 0.9);
+      pointer-events: none;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(6px) scale(0.97);
+      transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+    }
+
+    .skill-tip.is-visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0) scale(1);
+      pointer-events: auto;
+    }
+
+    .skill-tip--pink {
+      background: #fce8f0;
+    }
+
+    .skill-tip-label {
+      display: block;
+      font-family: 'Caveat', cursive;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #e05295;
+      margin-bottom: 0.35rem;
+      line-height: 1.2;
+    }
+
+    .skill-tip-text {
+      font-size: 0.8rem;
+      line-height: 1.55;
+      color: #2d2d2d;
+      margin: 0;
+    }
+
+    .skill-tip-close {
+      position: absolute;
+      top: 0.35rem;
+      right: 0.4rem;
+      width: 1.5rem;
+      height: 1.5rem;
+      border: none;
+      background: transparent;
+      color: #1a1a1a;
+      font-size: 1.25rem;
+      line-height: 1;
+      cursor: pointer;
+      opacity: 0.55;
+      padding: 0;
+    }
+
+    .skill-tip-close:hover {
+      opacity: 1;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .skill-sticker:hover { animation: none; }
+      .skill-tip { transition: none; }
+    }
+
+    .contact-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      max-width: 28rem;
+      border: 3px solid #1a1a1a;
+      background: #ff69b4;
+      color: #1a1a1a;
+      padding: 0.85rem 1.5rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      box-shadow: 4px 4px 0 rgba(26, 26, 26, 0.9);
+      transition: transform 0.2s, background 0.2s, color 0.2s;
+    }
+    .contact-btn:hover {
+      background: #e05295;
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    .guestbook-input {
+      width: 100%;
+      border: 2px solid #1a1a1a;
+      background: #fff;
+      color: #1a1a1a;
+      padding: 0.75rem 1rem;
+      font-size: 0.9rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .guestbook-input:focus {
+      outline: none;
+      border-color: #e05295;
+      box-shadow: 3px 3px 0 rgba(224, 82, 149, 0.35);
+    }
+    .guestbook-input::placeholder {
+      color: rgba(45, 45, 45, 0.45);
+    }
+
+    .guestbook-pin-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 3px solid #1a1a1a;
+      background: #ff69b4;
+      color: #1a1a1a;
+      padding: 0.8rem 1.4rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      box-shadow: 4px 4px 0 rgba(26, 26, 26, 0.9);
+      transition: transform 0.2s, background 0.2s, color 0.2s;
+    }
+    .guestbook-pin-btn:hover {
+      background: #e05295;
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    .post-it {
+      position: relative;
+      border: 2px solid #1a1a1a;
+      padding: 1.75rem 1.1rem 1.25rem;
+      width: 14rem;
+      max-width: 100%;
+      min-width: 0;
+      flex: 0 0 14rem;
+      box-sizing: border-box;
+      overflow: visible;
+      margin: 0.65rem;
+      box-shadow: 4px 5px 0 rgba(26, 26, 26, 0.14);
+      transition: transform 0.25s ease;
+    }
+    .post-it:hover {
+      transform: rotate(0deg) scale(1.03) !important;
+    }
+    .post-it-delete {
+      position: absolute;
+      top: 0.4rem;
+      right: 0.4rem;
+      width: 1.4rem;
+      height: 1.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1.5px solid #1a1a1a;
+      background: #fff;
+      color: #1a1a1a;
+      font-size: 0.85rem;
+      font-weight: 700;
+      line-height: 1;
+      cursor: pointer;
+      opacity: 0.55;
+      transition: opacity 0.2s, background 0.2s, color 0.2s;
+    }
+    .post-it:hover .post-it-delete,
+    .post-it-delete:focus {
+      opacity: 1;
+    }
+    .post-it-delete:hover {
+      background: #ff69b4;
+      color: #fff;
+      border-color: #e05295;
+    }
+
+    .guestbook-admin-bar {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #e05295;
+    }
+    .guestbook-admin-bar.is-active {
+      display: flex;
+    }
+    .guestbook-admin-logout {
+      border: 1.5px solid #1a1a1a;
+      background: #fff;
+      color: #1a1a1a;
+      padding: 0.2rem 0.55rem;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .guestbook-admin-logout:hover {
+      background: #1a1a1a;
+      color: #fff;
+    }
+    .post-it--cream { background: #fffef5; }
+    .post-it--pink { background: #fce8f0; }
+    .post-it--yellow { background: #fff9e6; }
+    .post-it-name {
+      font-family: 'Caveat', cursive;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #e05295;
+      margin-bottom: 0.35rem;
+      line-height: 1.2;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      max-width: 100%;
+      min-width: 0;
+    }
+    .post-it-msg {
+      font-family: 'Caveat', cursive;
+      font-size: 1.15rem;
+      color: #2d2d2d;
+      line-height: 1.35;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      max-width: 100%;
+      min-width: 0;
+    }
+
+    #guestbook-notes {
+      overflow: visible;
+      padding: 0.75rem 0.5rem 1rem;
+    }
+
+    @media (max-width: 639px) {
+      .post-it {
+        flex: 0 0 100%;
+        width: 100%;
+        max-width: 18rem;
+        margin: 0.5rem auto;
+      }
+    }
+
+    .burn-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.25rem;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.25s ease, visibility 0.25s ease;
+    }
+    .burn-modal.is-open {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+    .burn-modal-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(26, 26, 26, 0.45);
+      backdrop-filter: blur(3px);
+    }
+    .burn-modal-card {
+      position: relative;
+      width: 100%;
+      max-width: 22rem;
+      background: #fdfbf7;
+      border: 3px solid #1a1a1a;
+      padding: 1.75rem 1.5rem 1.5rem;
+      box-shadow: 8px 8px 0 rgba(224, 82, 149, 0.9);
+      transform: rotate(-1deg) scale(0.96);
+      transition: transform 0.25s ease;
+    }
+    .burn-modal.is-open .burn-modal-card {
+      transform: rotate(-1deg) scale(1);
+    }
+    .burn-modal-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: #1a1a1a;
+      text-transform: lowercase;
+      margin-bottom: 0.75rem;
+      line-height: 1.2;
+    }
+    .burn-modal-text {
+      font-size: 0.9rem;
+      color: #2d2d2d;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+    .burn-modal-preview {
+      font-family: 'Caveat', cursive;
+      font-size: 1.2rem;
+      color: #e05295;
+      background: #fff;
+      border: 1.5px solid #1a1a1a;
+      padding: 0.55rem 0.75rem;
+      margin-bottom: 1.25rem;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+    .burn-modal-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+    }
+    .burn-modal-btn {
+      flex: 1 1 auto;
+      min-width: 7rem;
+      border: 2px solid #1a1a1a;
+      padding: 0.65rem 1rem;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: transform 0.2s, background 0.2s, color 0.2s;
+    }
+    .burn-modal-btn:hover {
+      transform: translateY(-2px);
+    }
+    .burn-modal-btn--cancel {
+      background: #fff;
+      color: #1a1a1a;
+      box-shadow: 3px 3px 0 rgba(26, 26, 26, 0.2);
+    }
+    .burn-modal-btn--cancel:hover {
+      background: #f5f2eb;
+    }
+    .burn-modal-btn--confirm {
+      background: #ff69b4;
+      color: #1a1a1a;
+      box-shadow: 3px 3px 0 rgba(26, 26, 26, 0.9);
+    }
+    .burn-modal-btn--confirm:hover {
+      background: #e05295;
+      color: #fff;
+    }
+    .burn-modal-input {
+      width: 100%;
+      border: 2px solid #1a1a1a;
+      background: #fff;
+      color: #1a1a1a;
+      padding: 0.75rem 1rem;
+      font-size: 0.95rem;
+      letter-spacing: 0.12em;
+      margin-bottom: 0.5rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .burn-modal-input:focus {
+      outline: none;
+      border-color: #e05295;
+      box-shadow: 3px 3px 0 rgba(224, 82, 149, 0.35);
+    }
+    .burn-modal-error {
+      display: none;
+      font-family: 'Caveat', cursive;
+      font-size: 1.15rem;
+      color: #e05295;
+      margin-bottom: 1rem;
+    }
+    .burn-modal-error.is-visible {
+      display: block;
+    }
+
+    .star-deco {
+      pointer-events: none;
+      user-select: none;
+      filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.12));
+    }
+
+    @media (max-width: 639px) {
+      .nav-links {
+        gap: 0.5rem 0.75rem;
+        font-size: 0.65rem;
+        letter-spacing: 0.08em;
+      }
+    }
+
+    .lang-btn {
+      border: 2px solid #1a1a1a;
+      background: #fff;
+      color: #1a1a1a;
+      padding: 0.35rem 0.65rem;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      box-shadow: 3px 3px 0 rgba(224, 82, 149, 0.85);
+      cursor: pointer;
+      transition: transform 0.2s, background 0.2s, color 0.2s;
+      flex-shrink: 0;
+    }
+    .lang-btn:hover {
+      background: #ff69b4;
+      color: #fff;
+      border-color: #e05295;
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body class="font-sans text-ink antialiased overflow-x-hidden">
+
+  <!--
+    ═══ DIŞ LİNKLER — Kendi adreslerini buradan güncelle ═══
+    GITHUB_URL       → https://github.com/aleynatanikk
+    LINKEDIN_URL     → Kapak LinkedIn ikonu
+    PROJE1_KOD_URL   → PulseCheck — https://github.com/aleynatanikk/PulseCheck
+    PROJE2_KOD_URL   → n.otlan — https://github.com/aleynatanikk/n.otlan
+    EMAIL_ADRES      → İletişim — [ BANA E-POSTA GÖNDER ]
+    ADMIN_PIN        → Guestbook not silme şifresi (başlığa 3 kez tıkla)
+  -->
+
+  <!-- NAV -->
+  <nav class="sticky top-0 z-50 border-b border-burn/15 bg-cream/95 backdrop-blur-md">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between gap-3 sm:gap-4">
+      <div class="nav-links flex flex-wrap items-center justify-center flex-1 gap-3 sm:gap-8 text-xs sm:text-sm font-bold tracking-widest text-ink uppercase">
+        <a href="#top" class="nav-link relative hover:text-burndeep transition-colors" data-lang="nav.home">Ana Sayfa</a>
+        <a href="#hakkimda" class="nav-link relative hover:text-burndeep transition-colors" data-lang="nav.about">Hakkımda</a>
+        <a href="#projeler" class="nav-link relative hover:text-burndeep transition-colors" data-lang="nav.projects">Projeler</a>
+        <a href="#deneyim" class="nav-link relative hover:text-burndeep transition-colors" data-lang="nav.experience">Deneyim</a>
+        <a href="#yetenekler" class="nav-link relative hover:text-burndeep transition-colors" data-lang="nav.skills">Yetenekler</a>
+        <a href="#iletisim" class="nav-link relative hover:text-burndeep transition-colors" data-lang="nav.contact">İletişim</a>
+      </div>
+      <button type="button" id="lang-toggle" class="lang-btn" aria-label="Dili değiştir">[ EN ]</button>
+    </div>
+  </nav>
+
+  <!-- KAPAK -->
+  <header id="top" class="relative min-h-[85vh] flex items-center max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-16 overflow-visible">
+    <img
+      src="star-leopard-transparent.png"
+      alt=""
+      aria-hidden="true"
+      class="star-deco absolute left-2 sm:left-6 lg:left-0 bottom-16 sm:bottom-20 w-24 sm:w-32 lg:w-36 -rotate-12 z-20"
+    />
+    <img
+      src="star-gold-transparent.png"
+      alt=""
+      aria-hidden="true"
+      class="star-deco absolute right-4 sm:right-8 lg:right-12 top-20 sm:top-24 w-20 sm:w-24 lg:w-28 rotate-12 z-20"
+    />
+
+    <div class="relative z-10 w-full flex flex-col lg:flex-row items-center lg:items-center gap-8 lg:gap-10 xl:gap-12">
+      <!-- Sol: Polaroid -->
+      <div class="relative shrink-0 flex justify-center lg:justify-start">
+        <p class="absolute -top-2 left-4 lg:left-0 font-hand text-burndeep/75 text-base sm:text-lg -rotate-3 select-none pointer-events-none z-10" data-lang="hero.thisIsMe">
+          işte ben ִ ࣪𖤐
+        </p>
+        <figure class="polaroid relative bg-[#fefefe] shadow-xl -rotate-2 border border-ink/5 mt-6 z-[1]"
+                style="padding: 14px 14px 52px 14px;">
+          <div class="tape top-0 left-1/2 -translate-x-1/2 -translate-y-1/2" style="width: 90px;"></div>
+          <svg class="paperclip" viewBox="0 0 24 56" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M14 4C14 2 12 0 9 0C5 0 2 4 2 10V38C2 46 7 52 14 52C21 52 26 46 26 38V14" stroke="#8a8a8a" stroke-width="2.2" stroke-linecap="round" transform="scale(0.85) translate(2,2)"/>
+            <path d="M10 8C10 6 8 5 6 5C3 5 1 8 1 13V35C1 41 5 45 10 45C15 45 19 41 19 35V16" stroke="#b0b0b0" stroke-width="1.8" stroke-linecap="round" transform="scale(0.85) translate(2,2)"/>
+          </svg>
+          <div class="overflow-hidden ring-1 ring-burn/15">
+            <img
+              src="image.png"
+              alt="Aleyna Tanık"
+              class="w-64 sm:w-72 lg:w-72 xl:w-80 aspect-[3/4] object-cover object-top block bg-paper"
+            />
+          </div>
+          <figcaption class="font-hand text-2xl sm:text-3xl text-center text-burndeep mt-4 select-none">
+            Aleyna 2026
+          </figcaption>
+        </figure>
+      </div>
+
+      <!-- Sağ: İsim + unvan + butonlar -->
+      <div class="relative flex flex-col items-center lg:items-start gap-5 sm:gap-6 lg:max-w-md xl:max-w-lg">
+        <img
+          src="title.png"
+          alt="aleyna tanık"
+          class="ransom-title w-full max-w-xs sm:max-w-sm h-auto relative z-[1]"
+        />
+
+        <p class="font-serif text-center lg:text-left text-sm sm:text-base lg:text-lg text-ink leading-snug sm:leading-relaxed font-semibold relative z-[1]" data-lang="hero.tagline">
+          Yapay Zeka Destekli Geliştirme Odaklı Yazılım Mühendisi Adayı &amp; Arayüz Tasarımcısı
+        </p>
+
+        <div class="flex flex-wrap justify-center lg:justify-start gap-3 relative z-[1]">
+          <!-- GITHUB_URL -->
+          <a href="https://github.com/aleynatanikk" target="_blank" rel="noopener noreferrer" class="scrap-btn" title="GitHub" aria-label="GitHub">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          </a>
+          <!-- LINKEDIN_URL -->
+          <a href="https://www.linkedin.com/in/KULLANICI_ADIN" target="_blank" rel="noopener noreferrer" class="scrap-btn" title="LinkedIn" aria-label="LinkedIn">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 114.127 0 2.062 2.062 0 01-2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="#iletisim" class="scrap-btn" data-lang-aria="hero.contactAria" title="İletişim" aria-label="İletişim bölümüne git">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- HAKKIMDA -->
+  <section id="hakkimda" class="py-20 sm:py-28">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <h2 class="font-serif text-4xl sm:text-5xl font-extrabold text-ink lowercase mb-12 sm:mb-16" data-lang="section.about">
+        hakkımda
+      </h2>
+
+      <article class="project-card bg-cream p-6 sm:p-8 lg:p-10 max-w-4xl mx-auto">
+        <p class="text-fume text-sm sm:text-[0.95rem] lg:text-base leading-relaxed sm:leading-[1.85]" data-lang="about.text">
+          Ben Aleyna. 22 yaşındayım ve şu an Kıbrıs'ta eğitimine devam eden bir Yazılım Mühendisliği 3. sınıf öğrencisiyim. Teknolojiyi, minimalist tasarımları ve hayatı kolaylaştıran dijital çözümleri çok seviyorum. Benim için bir projenin arkasındaki kod mimarisinin kusursuz çalışması kadar, ön yüzünün de estetik ve şık görünmesi önemlidir. Günlük hayatımda verimliliği ve düzeni ön planda tuttuğum için, yazılım geliştirme süreçlerimde de yapay zeka araçlarını ve prompt mühendisliğini aktif bir şekilde iş akışıma entegre ediyorum. KKTCell'deki 7 aylık RPA (Robotik Süreç Otomasyonu) stajım ve Türk Telekom'daki ağ altyapısı deneyimimle sistemlerin arka planını çözmeye devam ederken; bir yandan da modern, hızlı ve kullanıcı odaklı web deneyimleri inşa etmeye odaklanıyorum.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <!-- PROJELER -->
+  <section id="projeler" class="py-20 sm:py-28">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <h2 class="font-serif text-4xl sm:text-5xl font-extrabold text-ink lowercase mb-12 sm:mb-16" data-lang="section.projects">
+        projeler
+      </h2>
+
+      <div class="space-y-10 sm:space-y-14">
+        <!-- Proje 1: PulseCheck -->
+        <article class="project-card relative bg-cream overflow-hidden">
+          <div class="grid md:grid-cols-2">
+            <!-- Laptop görseli -->
+            <div class="project-grid-pink relative flex items-center justify-center p-6 sm:p-10 min-h-[280px] sm:min-h-[340px]">
+              <span class="project-badge top-4 left-4 sm:top-5 sm:left-5" data-lang="project1.badge1">Açık Kaynak</span>
+              <span class="project-badge bottom-4 left-4 sm:left-1/2 sm:-translate-x-1/2 sm:bottom-5" data-lang="project1.badge2">Python Otomasyon</span>
+              <img
+                src="laptop-3d.png"
+                alt="PulseCheck — 3D laptop"
+                class="w-full max-w-xs sm:max-w-sm h-auto object-contain drop-shadow-2xl select-none"
+                draggable="false"
+              />
+            </div>
+
+            <!-- İçerik -->
+            <div class="bg-cream flex flex-col justify-center p-8 sm:p-10 lg:p-12 border-t md:border-t-0 md:border-l-[3px] border-ink">
+              <h3 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-ink tracking-tight mb-5">
+                PulseCheck
+              </h3>
+
+              <!-- PROJE1_KOD_URL -->
+              <a href="https://github.com/aleynatanikk/PulseCheck" target="_blank" rel="noopener noreferrer" class="project-btn w-fit mb-6">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                </svg>
+                <span data-lang="project.btn">[ Proje Kodunu İncele ]</span>
+              </a>
+
+              <ul class="space-y-3 text-fume text-sm sm:text-[0.9rem] leading-relaxed list-disc pl-4 marker:text-ink">
+                <li data-lang="project1.li1">Latency, Jitter ve Packet Loss metriklerini analiz eden ve görselleştiren modern bir masaüstü dashboard uygulaması geliştirdim.</li>
+                <li data-lang="project1.li2">Kullanıcı dostu arayüz tasarımı ile dinamik web sitesi analiz modülünü (URL/domain bazlı ping testi) entegre ettim.</li>
+                <li data-lang="project1.li3">Geliştirme sürecinde yapay zeka destekli araçlar kullanarak verimliliği artırdım.</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <!-- Proje 2: n.otlan -->
+        <article class="project-card relative bg-cream overflow-hidden">
+          <span class="project-badge top-4 left-4 sm:top-5 sm:left-5" data-lang="project2.badge">Web Geliştirme</span>
+
+          <div class="grid md:grid-cols-2">
+            <!-- İçerik -->
+            <div class="bg-cream flex flex-col justify-center p-8 sm:p-10 lg:p-12 order-2 md:order-1 border-t md:border-t-0 md:border-r-[3px] border-ink">
+              <h3 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-ink tracking-tight mb-5">
+                n.otlan
+              </h3>
+
+              <a href="https://github.com/aleynatanikk/n.otlan" target="_blank" rel="noopener noreferrer" class="project-btn w-fit mb-6">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                </svg>
+                <span data-lang="project.btn">[ Proje Kodunu İncele ]</span>
+              </a>
+
+              <ul class="space-y-3 text-fume text-sm sm:text-[0.9rem] leading-relaxed list-disc pl-4 marker:text-ink">
+                <li data-lang="project2.li1">Web tabanlı öğrenci not paylaşım platformu geliştirdim.</li>
+                <li data-lang="project2.li2">Kullanıcı yönetimi, veri depolama yapısı ve dinamik içerik paylaşım sistemini tasarladım.</li>
+                <li data-lang="project2.li3">Geliştirme sürecinde istek optimizasyonu ve veritabanı hızlandırma çalışmalarına odaklandım.</li>
+                <li data-lang="project2.li4">Yapay zeka destekli araçlardan faydalanarak süreci yönettim.</li>
+              </ul>
+            </div>
+
+            <!-- Görsel -->
+            <div class="project-grid-neutral relative flex items-center justify-center p-8 sm:p-12 min-h-[280px] sm:min-h-[340px] order-1 md:order-2">
+              <img
+                src="hey.png"
+                alt="n.otlan — çalışma masasında bilgisayar başında çizim"
+                data-lang-alt="project2.imgAlt"
+                class="w-full max-w-[15rem] sm:max-w-xs lg:max-w-sm h-auto object-contain drop-shadow-md rotate-[2deg] select-none"
+                draggable="false"
+              />
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- DENEYİM & EĞİTİM -->
+  <section id="deneyim" class="py-20 sm:py-28">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <h2 class="font-serif text-4xl sm:text-5xl font-extrabold text-ink lowercase mb-12 sm:mb-16" data-lang="section.experience">
+        deneyim &amp; eğitim
+      </h2>
+
+      <div class="grid sm:grid-cols-2 gap-4 sm:gap-6">
+        <!-- Lisans Eğitimi -->
+        <article class="project-card bg-cream p-6 sm:p-8 lg:p-10 sm:col-span-2 flex flex-col">
+          <h3 class="text-xl sm:text-2xl lg:text-3xl font-bold text-ink mb-2" data-lang="exp.edu.title">
+            Girne Üniversitesi
+          </h3>
+          <p class="text-sm sm:text-base font-semibold text-burndeep mb-5" data-lang="exp.edu.role">
+            Yazılım Mühendisliği (Lisans) | 2023 — Mevcut
+          </p>
+          <p class="text-fume text-sm sm:text-[0.9rem] leading-relaxed" data-lang="exp.edu.text">
+            Mühendislik Fakültesi bünyesinde teorik yazılım mimarileri, algoritma tasarımı ve veri yapıları üzerine eğitimime devam ediyorum.
+          </p>
+        </article>
+
+        <!-- Uzun Dönem Staj -->
+        <article class="project-card bg-paper p-6 sm:p-8 lg:p-10 flex flex-col">
+          <h3 class="text-xl sm:text-2xl font-bold text-ink mb-2" data-lang="exp.kkt.title">
+            Kuzey Kıbrıs Turkcell (KKTCell)
+          </h3>
+          <p class="text-sm sm:text-base font-semibold text-burndeep mb-5" data-lang="exp.kkt.role">
+            Gönüllü RPA Stajyeri | Ekim 2024 — Mayıs 2025
+          </p>
+          <ul class="space-y-3 text-fume text-sm sm:text-[0.9rem] leading-relaxed list-disc pl-4 marker:text-ink">
+            <li data-lang="exp.kkt.li1">RPA (Robotik Süreç Otomasyonu) araçlarını kullanarak iş süreçlerinin otomasyonunu geliştirdim.</li>
+            <li data-lang="exp.kkt.li2">E-posta aktiviteleri ve raporlama süreçleri için özel otomasyon akışları oluşturdum.</li>
+            <li data-lang="exp.kkt.li3">Tekrarlayan manuel işlemleri botlar aracılığıyla dijitalleştirerek operasyonel verimliliği artırdım.</li>
+          </ul>
+        </article>
+
+        <!-- Zorunlu Yaz Stajı -->
+        <article class="project-card project-grid-pink p-6 sm:p-8 lg:p-10 flex flex-col">
+          <h3 class="text-xl sm:text-2xl font-bold text-ink mb-2" data-lang="exp.tt.title">
+            Türk Telekom Diyarbakır Bölge Müdürlüğü
+          </h3>
+          <p class="text-sm sm:text-base font-semibold text-burndeep mb-5" data-lang="exp.tt.role">
+            Ağ Altyapısı Stajyeri | Ağustos 2025
+          </p>
+          <ul class="space-y-3 text-fume text-sm sm:text-[0.9rem] leading-relaxed list-disc pl-4 marker:text-ink">
+            <li data-lang="exp.tt.li1">Bölge müdürlüğü bünyesinde 10 ilden sorumlu ağ altyapısı çalışmalarına destek verdim.</li>
+            <li data-lang="exp.tt.li2">Router, switch ve modem gibi ağ cihazlarının temel yapılandırma süreçlerini uyguladım.</li>
+            <li data-lang="exp.tt.li3">OSI modeli ve TCP/IP protokol yapısının canlı altyapı uygulamalarını gözlemledim ve arıza tespit süreçlerine katkı sağladım.</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- YETENEKLER -->
+  <section id="yetenekler" class="py-20 sm:py-28">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <h2 class="font-serif text-4xl sm:text-5xl font-extrabold text-ink lowercase mb-12 sm:mb-16" data-lang="section.skills">
+        yetenekler
+      </h2>
+
+      <div class="grid sm:grid-cols-2 gap-4 sm:gap-6">
+        <!-- 1. Büyük kutu: Yapay Zeka -->
+        <article class="project-card bg-cream p-6 sm:p-8 lg:p-10 sm:col-span-2 flex flex-col">
+          <h3 class="text-xl sm:text-2xl lg:text-3xl font-bold text-ink mb-5" data-lang="skills.ai.title">
+            Yapay Zeka &amp; Prompt Mühendisliği
+          </h3>
+          <ul class="space-y-3 text-fume text-sm sm:text-[0.9rem] leading-relaxed list-disc pl-4 marker:text-ink flex-grow">
+            <li data-lang="skills.ai.li1">Yazılım geliştirme süreçlerimde Cursor başta olmak üzere yapay zeka destekli araçları aktif olarak kullanıyor, kod üretim hızımı ve verimliliğimi artırıyorum.</li>
+            <li data-lang="skills.ai.li2">Büyük dil modellerine (LLMs) yönelik prompt engineering (istem mühendisliği) tekniklerini projelerimin ihtiyaçlarına göre optimize ediyorum.</li>
+            <li data-lang="skills.ai.li3">Geliştirdiğim web projelerinde ve veri yönetim süreçlerinde AI araçlarından mimari destek alıyorum.</li>
+          </ul>
+        </article>
+
+        <!-- 2. Web Geliştirme -->
+        <article class="project-card bg-paper p-6 sm:p-8 lg:p-10 flex flex-col">
+          <h3 class="text-xl sm:text-2xl font-bold text-ink mb-5" data-lang="skills.web.title">
+            Web Geliştirme (Frontend &amp; Backend)
+          </h3>
+          <ul class="space-y-3 text-fume text-sm sm:text-[0.9rem] leading-relaxed list-disc pl-4 marker:text-ink flex-grow">
+            <li data-lang="skills.web.li1">Vue.js framework'ü, HTML5, CSS3 ve modern JavaScript (ES6+) kullanarak kullanıcı dostu, responsive (mobil uyumlu) ve performanslı web uygulamaları geliştiriyorum.</li>
+            <li data-lang="skills.web.li2">PHP ve MySQL kullanarak veritabanı mimarilerini tasarlıyor, kullanıcı yönetimi ve dinamik içerik paylaşım sistemleri inşa ediyorum.</li>
+            <li data-lang="skills.web.li3">Tailwind CSS kütüphanesi ile modern, hızlı ve özgün arayüz tasarımları uyguluyorum.</li>
+          </ul>
+        </article>
+
+        <!-- 3. Ağ Altyapısı -->
+        <article class="project-card project-grid-pink p-6 sm:p-8 lg:p-10 flex flex-col">
+          <h3 class="text-xl sm:text-2xl font-bold text-ink mb-5" data-lang="skills.net.title">
+            Ağ Altyapısı (Network Infrastructure)
+          </h3>
+          <ul class="space-y-3 text-fume text-sm sm:text-[0.9rem] leading-relaxed list-disc pl-4 marker:text-ink flex-grow">
+            <li data-lang="skills.net.li1">Router (yönlendirici) ve switch (anahtar) gibi kritik ağ cihazlarının temel yapılandırma ve yönetim süreçlerinde pratik deneyime sahibim.</li>
+            <li data-lang="skills.net.li2">OSI modeli ve TCP/IP protokol yapısının canlı network altyapılarındaki uygulamalarını analiz edip arıza tespit süreçlerine destek veriyorum.</li>
+            <li data-lang="skills.net.li3">IP adresleme dinamikleri ve temel ağ topolojileri üzerine altyapı çalışmaları yürütüyorum.</li>
+          </ul>
+        </article>
+      </div>
+
+      <!-- Teknoloji sticker şeridi + Nedir? tooltip -->
+      <div class="skills-sticker-zone mt-8 sm:mt-10">
+        <p class="skills-sticker-hint" data-lang="skills.stickerHint">üzerine gel veya tıkla — nedir? 𖤐</p>
+        <div class="skills-sticker-row" id="skills-sticker-row">
+          <button type="button" class="skill-sticker" data-tip="vue" style="--sticker-rotate: -2deg">Vue.js</button>
+          <button type="button" class="skill-sticker skill-sticker--paper" data-tip="php-mysql" style="--sticker-rotate: 1.5deg">PHP</button>
+          <button type="button" class="skill-sticker" data-tip="php-mysql" style="--sticker-rotate: -1deg">MySQL</button>
+          <button type="button" class="skill-sticker skill-sticker--pink" data-tip="html-css-js" style="--sticker-rotate: 2deg">HTML5</button>
+          <button type="button" class="skill-sticker skill-sticker--paper" data-tip="html-css-js" style="--sticker-rotate: -2.5deg">CSS3</button>
+          <button type="button" class="skill-sticker" data-tip="html-css-js" style="--sticker-rotate: 1deg">JavaScript</button>
+          <button type="button" class="skill-sticker skill-sticker--pink" data-tip="python" style="--sticker-rotate: -1.5deg">Python</button>
+          <button type="button" class="skill-sticker" data-tip="cpp-csharp" style="--sticker-rotate: 2.5deg">C++</button>
+          <button type="button" class="skill-sticker skill-sticker--paper" data-tip="cpp-csharp" style="--sticker-rotate: -2deg">C#</button>
+          <button type="button" class="skill-sticker skill-sticker--pink" data-tip="network" style="--sticker-rotate: 1.5deg">Ping</button>
+          <button type="button" class="skill-sticker" data-tip="network" style="--sticker-rotate: -1deg">Cisco</button>
+          <button type="button" class="skill-sticker skill-sticker--paper" data-tip="network" style="--sticker-rotate: 2deg">Subnetting</button>
+          <button type="button" class="skill-sticker skill-sticker--pink" data-tip="network" style="--sticker-rotate: -2deg">Routing</button>
+        </div>
+      </div>
+
+      <div id="skill-tip" class="skill-tip" role="tooltip" aria-hidden="true">
+        <button type="button" id="skill-tip-close" class="skill-tip-close" data-lang-aria="skills.tipClose" aria-label="Kapat">×</button>
+        <span class="skill-tip-label" data-lang="skills.tipLabel">nedir?</span>
+        <p class="skill-tip-text" id="skill-tip-text"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- GUESTBOOK -->
+  <section id="guestbook" class="py-20 sm:py-28">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <h2 id="guestbook-title" class="font-serif text-4xl sm:text-5xl font-extrabold text-ink lowercase mb-12 sm:mb-16 select-none" data-lang="section.guestbook">
+        bana bir not bırak
+      </h2>
+
+      <article class="project-card bg-cream p-6 sm:p-8 lg:p-10 max-w-3xl mx-auto"
+               style="box-shadow: 6px 6px 0 rgba(224, 82, 149, 0.85);">
+        <div class="space-y-4">
+          <div>
+            <label for="guestbook-name" class="sr-only" data-lang="guestbook.nameLabel">Adın veya nickname</label>
+            <input
+              type="text"
+              id="guestbook-name"
+              class="guestbook-input"
+              data-lang-placeholder="guestbook.namePlaceholder"
+              placeholder="Adın veya Nickname... 𖤐"
+              maxlength="40"
+            />
+          </div>
+          <div>
+            <label for="guestbook-message" class="sr-only" data-lang="guestbook.messageLabel">Notun</label>
+            <textarea
+              id="guestbook-message"
+              rows="4"
+              class="guestbook-input resize-none"
+              data-lang-placeholder="guestbook.messagePlaceholder"
+              placeholder="Benimle ilgili bir not bırak... "
+              maxlength="60"
+            ></textarea>
+          </div>
+          <button type="button" id="guestbook-pin-btn" class="guestbook-pin-btn w-full sm:w-auto" data-lang="guestbook.submit">
+            [ notunu kaydet ]
+          </button>
+        </div>
+      </article>
+
+      <div id="guestbook-admin-bar" class="guestbook-admin-bar max-w-3xl mx-auto">
+        <span data-lang="guestbook.adminBar">🔒 yönetici modu — notları silebilirsin</span>
+        <button type="button" id="guestbook-admin-logout" class="guestbook-admin-logout" data-lang="guestbook.adminLogout">çıkış</button>
+      </div>
+
+      <div id="guestbook-notes" class="mt-10 sm:mt-12 flex flex-wrap justify-center gap-6 sm:gap-8 w-full"></div>
+    </div>
+  </section>
+
+  <!-- İLETİŞİM -->
+  <section id="iletisim" class="py-20 sm:py-28">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col items-center text-center">
+      <h2 class="font-serif text-4xl sm:text-5xl font-extrabold text-ink lowercase mb-12 sm:mb-16" data-lang="section.contact">
+        iletişim
+      </h2>
+
+      <article class="project-card bg-cream p-8 sm:p-10 lg:p-12 flex flex-col items-center gap-8 w-full max-w-2xl mx-auto"
+               style="box-shadow: 6px 6px 0 rgba(224, 82, 149, 0.85);">
+        <p class="text-fume text-sm sm:text-base lg:text-lg leading-relaxed sm:leading-[1.85]" data-lang="contact.text">
+          Yeni projeler, fırsatlar veya sadece teknik konularda fikir alışverişi yapmak için her zaman bana ulaşabilirsiniz.
+        </p>
+
+        <!-- EMAIL_ADRES: aleynatanikk@gmail.com -->
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=aleynatanikk@gmail.com&body=merhaba%3A)%20portf%C3%B6y%C3%BCn%C3%BCzden%20geldim%3A))" target="_blank" rel="noopener noreferrer" class="contact-btn" id="contact-email-btn" data-lang="contact.emailBtn">
+          [ BANA E-POSTA GÖNDER ]
+        </a>
+      </article>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-10 sm:py-12 px-4 border-t border-ink/10">
+    <p class="text-center text-fume text-sm sm:text-[0.9rem] tracking-wide" data-lang="footer.text">
+      © 2026 Tasarım &amp; Kodlama: Aleyna Tanık
+    </p>
+  </footer>
+
+  <!-- NOT SİLME ONAY -->
+  <div id="delete-modal" class="burn-modal" aria-hidden="true">
+    <div class="burn-modal-backdrop" id="delete-modal-backdrop"></div>
+    <div class="burn-modal-card" role="dialog" aria-modal="true" aria-labelledby="delete-modal-title">
+      <h3 id="delete-modal-title" class="burn-modal-title" data-lang="modal.delete.title">emin misin?</h3>
+      <p class="burn-modal-text" data-lang="modal.delete.text">Bu post-it notunu kalıcı olarak silmek üzeresin. Geri alınamaz!</p>
+      <p id="delete-modal-preview" class="burn-modal-preview"></p>
+      <div class="burn-modal-actions">
+        <button type="button" id="delete-modal-cancel" class="burn-modal-btn burn-modal-btn--cancel" data-lang="modal.cancel">[ Vazgeç ]</button>
+        <button type="button" id="delete-modal-confirm" class="burn-modal-btn burn-modal-btn--confirm" data-lang="modal.delete.confirm">[ Evet, Sil ]</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- YÖNETİCİ GİRİŞ -->
+  <div id="admin-modal" class="burn-modal" aria-hidden="true">
+    <div class="burn-modal-backdrop" id="admin-modal-backdrop"></div>
+    <div class="burn-modal-card" role="dialog" aria-modal="true" aria-labelledby="admin-modal-title">
+      <h3 id="admin-modal-title" class="burn-modal-title" data-lang="modal.admin.title">yönetici girişi</h3>
+      <p class="burn-modal-text" data-lang="modal.admin.text">Notları yönetmek için şifreni gir — sadece sen bilmelisin 🔒</p>
+      <label for="admin-modal-pin" class="sr-only" data-lang="modal.admin.pinLabel">Yönetici şifresi</label>
+      <input
+        type="password"
+        id="admin-modal-pin"
+        class="burn-modal-input"
+        placeholder="••••••••"
+        autocomplete="off"
+        maxlength="32"
+      />
+      <p id="admin-modal-error" class="burn-modal-error" data-lang="modal.admin.errorWrong">Şifre yanlış, tekrar dene 💋</p>
+      <div class="burn-modal-actions">
+        <button type="button" id="admin-modal-cancel" class="burn-modal-btn burn-modal-btn--cancel" data-lang="modal.cancel">[ Vazgeç ]</button>
+        <button type="button" id="admin-modal-confirm" class="burn-modal-btn burn-modal-btn--confirm" data-lang="modal.admin.confirm">[ Giriş Yap ]</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const LANG_KEY = 'site_lang';
+      const EMAIL = 'aleynatanikk@gmail.com';
+
+      const TRANSLATIONS = {
+        tr: {
+          'meta.title': 'Aleyna Tanık — Portföy',
+          'meta.description': 'Aleyna Tanık — Yazılım Mühendisliği öğrencisi portföy sitesi.',
+          'nav.about': 'Hakkımda',
+          'nav.home': 'Ana Sayfa',
+          'nav.projects': 'Projeler',
+          'nav.experience': 'Deneyim',
+          'nav.skills': 'Yetenekler',
+          'nav.contact': 'İletişim',
+          'lang.toggle': '[ EN ]',
+          'lang.aria': 'İngilizceye geç',
+          'hero.thisIsMe': 'işte ben ִ ࣪𖤐',
+          'hero.contactAria': 'İletişim bölümüne git',
+          'hero.tagline': 'Yapay Zeka Destekli Geliştirme Odaklı Yazılım Mühendisi Adayı & Arayüz Tasarımcısı',
+          'section.about': 'hakkımda',
+          'section.projects': 'projeler',
+          'section.experience': 'deneyim & eğitim',
+          'section.skills': 'yetenekler',
+          'section.guestbook': 'bana bir not bırak',
+          'section.contact': 'iletişim',
+          'about.text': "Ben Aleyna. 22 yaşındayım ve şu an Kıbrıs'ta eğitimine devam eden bir Yazılım Mühendisliği 3. sınıf öğrencisiyim. Teknolojiyi, minimalist tasarımları ve hayatı kolaylaştıran dijital çözümleri çok seviyorum. Benim için bir projenin arkasındaki kod mimarisinin kusursuz çalışması kadar, ön yüzünün de estetik ve şık görünmesi önemlidir. Günlük hayatımda verimliliği ve düzeni ön planda tuttuğum için, yazılım geliştirme süreçlerimde de yapay zeka araçlarını ve prompt mühendisliğini aktif bir şekilde iş akışıma entegre ediyorum. KKTCell'deki 7 aylık RPA (Robotik Süreç Otomasyonu) stajım ve Türk Telekom'daki ağ altyapısı deneyimimle sistemlerin arka planını çözmeye devam ederken; bir yandan da modern, hızlı ve kullanıcı odaklı web deneyimleri inşa etmeye odaklanıyorum.",
+          'project1.badge1': 'Açık Kaynak',
+          'project1.badge2': 'Python Otomasyon',
+          'project.btn': '[ Proje Kodunu İncele ]',
+          'project1.li1': 'Latency, Jitter ve Packet Loss metriklerini analiz eden ve görselleştiren modern bir masaüstü dashboard uygulaması geliştirdim.',
+          'project1.li2': 'Kullanıcı dostu arayüz tasarımı ile dinamik web sitesi analiz modülünü (URL/domain bazlı ping testi) entegre ettim.',
+          'project1.li3': 'Geliştirme sürecinde yapay zeka destekli araçlar kullanarak verimliliği artırdım.',
+          'project2.badge': 'Web Geliştirme',
+          'project2.li1': 'Web tabanlı öğrenci not paylaşım platformu geliştirdim.',
+          'project2.li2': 'Kullanıcı yönetimi, veri depolama yapısı ve dinamik içerik paylaşım sistemini tasarladım.',
+          'project2.li3': 'Geliştirme sürecinde istek optimizasyonu ve veritabanı hızlandırma çalışmalarına odaklandım.',
+          'project2.li4': 'Yapay zeka destekli araçlardan faydalanarak süreci yönettim.',
+          'project2.imgAlt': 'n.otlan — çalışma masasında bilgisayar başında çizim',
+          'exp.edu.title': 'Girne Üniversitesi',
+          'exp.edu.role': 'Yazılım Mühendisliği (Lisans) | 2023 — Mevcut',
+          'exp.edu.text': 'Mühendislik Fakültesi bünyesinde teorik yazılım mimarileri, algoritma tasarımı ve veri yapıları üzerine eğitimime devam ediyorum.',
+          'exp.kkt.title': 'Kuzey Kıbrıs Turkcell (KKTCell)',
+          'exp.kkt.role': 'Gönüllü RPA Stajyeri | Ekim 2024 — Mayıs 2025',
+          'exp.kkt.li1': 'RPA (Robotik Süreç Otomasyonu) araçlarını kullanarak iş süreçlerinin otomasyonunu geliştirdim.',
+          'exp.kkt.li2': 'E-posta aktiviteleri ve raporlama süreçleri için özel otomasyon akışları oluşturdum.',
+          'exp.kkt.li3': 'Tekrarlayan manuel işlemleri botlar aracılığıyla dijitalleştirerek operasyonel verimliliği artırdım.',
+          'exp.tt.title': 'Türk Telekom Diyarbakır Bölge Müdürlüğü',
+          'exp.tt.role': 'Ağ Altyapısı Stajyeri | Ağustos 2025',
+          'exp.tt.li1': 'Bölge müdürlüğü bünyesinde 10 ilden sorumlu ağ altyapısı çalışmalarına destek verdim.',
+          'exp.tt.li2': 'Router, switch ve modem gibi ağ cihazlarının temel yapılandırma süreçlerini uyguladım.',
+          'exp.tt.li3': 'OSI modeli ve TCP/IP protokol yapısının canlı altyapı uygulamalarını gözlemledim ve arıza tespit süreçlerine katkı sağladım.',
+          'skills.ai.title': 'Yapay Zeka & Prompt Mühendisliği',
+          'skills.ai.li1': 'Yazılım geliştirme süreçlerimde Cursor başta olmak üzere yapay zeka destekli araçları aktif olarak kullanıyor, kod üretim hızımı ve verimliliğimi artırıyorum.',
+          'skills.ai.li2': 'Büyük dil modellerine (LLMs) yönelik prompt engineering (istem mühendisliği) tekniklerini projelerimin ihtiyaçlarına göre optimize ediyorum.',
+          'skills.ai.li3': 'Geliştirdiğim web projelerinde ve veri yönetim süreçlerinde AI araçlarından mimari destek alıyorum.',
+          'skills.web.title': 'Web Geliştirme (Frontend & Backend)',
+          'skills.web.li1': "Vue.js framework'ü, HTML5, CSS3 ve modern JavaScript (ES6+) kullanarak kullanıcı dostu, responsive (mobil uyumlu) ve performanslı web uygulamaları geliştiriyorum.",
+          'skills.web.li2': 'PHP ve MySQL kullanarak veritabanı mimarilerini tasarlıyor, kullanıcı yönetimi ve dinamik içerik paylaşım sistemleri inşa ediyorum.',
+          'skills.web.li3': 'Tailwind CSS kütüphanesi ile modern, hızlı ve özgün arayüz tasarımları uyguluyorum.',
+          'skills.net.title': 'Ağ Altyapısı (Network Infrastructure)',
+          'skills.net.li1': 'Router (yönlendirici) ve switch (anahtar) gibi kritik ağ cihazlarının temel yapılandırma ve yönetim süreçlerinde pratik deneyime sahibim.',
+          'skills.net.li2': 'OSI modeli ve TCP/IP protokol yapısının canlı network altyapılarındaki uygulamalarını analiz edip arıza tespit süreçlerine destek veriyorum.',
+          'skills.net.li3': 'IP adresleme dinamikleri ve temel ağ topolojileri üzerine altyapı çalışmaları yürütüyorum.',
+          'skills.stickerHint': 'üzerine gel veya tıkla — nedir? 𖤐',
+          'skills.tipLabel': 'nedir?',
+          'skills.tipClose': 'Kapat',
+          'skills.tip.vue': "Modern, esnek ve kullanıcı dostu arayüzler (UI) geliştirmeyi sağlayan popüler bir JavaScript framework'ü.",
+          'skills.tip.php-mysql': 'Web sitelerinin arka planını yöneten ve verileri güvenle saklayan dinamik backend ikilisi.',
+          'skills.tip.python': 'Yapay zeka, veri analizi ve otomasyon süreçlerinde dünya lideri, temiz ve güçlü bir yazılım dili.',
+          'skills.tip.cpp-csharp': 'Nesne yönelimli programlamanın (OOP) temeli olan; sistem mimarilerinden oyun geliştirmeye kadar uzanan güçlü diller.',
+          'skills.tip.html-css-js': 'Web sitelerinin iskeletini, görsel tasarımını ve dinamik hareketlerini oluşturan ayrılmaz üçlü.',
+          'skills.tip.network': 'Ağ altyapılarının omurgasını oluşturan; veri paketlerinin rotasını çizen, IP adreslerini yöneten ve sistem aktifliğini ölçen ağ protokolleri ve cihazları.',
+          'guestbook.nameLabel': 'Adın veya nickname',
+          'guestbook.messageLabel': 'Notun',
+          'guestbook.namePlaceholder': 'Adın veya Nickname... 𖤐',
+          'guestbook.messagePlaceholder': 'Benimle ilgili bir not bırak... ',
+          'guestbook.submit': '[ notunu kaydet ]',
+          'guestbook.adminBar': '🔒 yönetici modu — notları silebilirsin',
+          'guestbook.adminLogout': 'çıkış',
+          'contact.text': 'Yeni projeler, fırsatlar veya sadece teknik konularda fikir alışverişi yapmak için her zaman bana ulaşabilirsiniz.',
+          'contact.emailBtn': '[ BANA E-POSTA GÖNDER ]',
+          'contact.emailBody': 'merhaba:) portföyünüzden geldim:))',
+          'footer.text': '© 2026 Tasarım & Kodlama: Aleyna Tanık',
+          'modal.delete.title': 'emin misin?',
+          'modal.delete.text': 'Bu post-it notunu kalıcı olarak silmek üzeresin. Geri alınamaz!',
+          'modal.delete.preview': '— bu notu siliyorsun 📌',
+          'modal.delete.confirm': '[ Evet, Sil ]',
+          'modal.cancel': '[ Vazgeç ]',
+          'modal.admin.title': 'yönetici girişi',
+          'modal.admin.pinLabel': 'Yönetici şifresi',
+          'modal.admin.text': 'Notları yönetmek için şifreni gir — sadece sen bilmelisin 🔒',
+          'modal.admin.confirm': '[ Giriş Yap ]',
+          'modal.admin.errorWrong': 'Şifre yanlış, tekrar dene 💋',
+          'modal.admin.errorEmpty': 'Şifre boş olamaz ✨',
+          'guestbook.deleteNote': 'Notu sil',
+        },
+        en: {
+          'meta.title': 'Aleyna Tanık — Portfolio',
+          'meta.description': 'Aleyna Tanık — Software Engineering student portfolio.',
+          'nav.about': 'About',
+          'nav.home': 'Home',
+          'nav.projects': 'Projects',
+          'nav.experience': 'Experience',
+          'nav.skills': 'Skills',
+          'nav.contact': 'Contact',
+          'lang.toggle': '[ TR ]',
+          'lang.aria': 'Switch to Turkish',
+          'hero.thisIsMe': 'this is me ִ ࣪𖤐',
+          'hero.contactAria': 'Go to contact section',
+          'hero.tagline': 'AI-Assisted Development Focused Software Engineering Candidate & UI Designer',
+          'section.about': 'about',
+          'section.projects': 'projects',
+          'section.experience': 'experience & education',
+          'section.skills': 'skills',
+          'section.guestbook': 'leave a note',
+          'section.contact': 'contact',
+          'about.text': "I'm Aleyna. I'm 22 years old and currently a third-year Software Engineering student in Cyprus. I love technology, minimalist design, and digital solutions that make life easier. For me, flawless backend architecture matters just as much as an aesthetic, polished frontend. Because I value efficiency and organization in daily life, I actively integrate AI tools and prompt engineering into my development workflow. While continuing to understand systems through my 7-month RPA internship at KKTCell and network infrastructure experience at Türk Telekom, I'm also focused on building modern, fast, and user-centered web experiences.",
+          'project1.badge1': 'Open Source',
+          'project1.badge2': 'Python Automation',
+          'project.btn': '[ View Project Code ]',
+          'project1.li1': 'Developed a modern desktop dashboard that analyzes and visualizes Latency, Jitter, and Packet Loss metrics.',
+          'project1.li2': 'Integrated a dynamic website analysis module (URL/domain-based ping test) with a user-friendly interface.',
+          'project1.li3': 'Increased efficiency using AI-assisted tools throughout development.',
+          'project2.badge': 'Web Development',
+          'project2.li1': 'Built a web-based student note-sharing platform.',
+          'project2.li2': 'Designed user management, data storage architecture, and dynamic content sharing systems.',
+          'project2.li3': 'Focused on request optimization and database performance improvements.',
+          'project2.li4': 'Managed the process leveraging AI-assisted tools.',
+          'project2.imgAlt': 'n.otlan — line art of developer at a desk',
+          'exp.edu.title': 'Kyrenia University',
+          'exp.edu.role': 'Software Engineering (BSc) | 2023 — Present',
+          'exp.edu.text': 'I continue my education in theoretical software architectures, algorithm design, and data structures within the Faculty of Engineering.',
+          'exp.kkt.title': 'Kuzey Kıbrıs Turkcell (KKTCell)',
+          'exp.kkt.role': 'Volunteer RPA Intern | Oct 2024 — May 2025',
+          'exp.kkt.li1': 'Developed business process automation using RPA (Robotic Process Automation) tools.',
+          'exp.kkt.li2': 'Built custom automation flows for email activities and reporting processes.',
+          'exp.kkt.li3': 'Digitized repetitive manual tasks through bots, increasing operational efficiency.',
+          'exp.tt.title': 'Türk Telekom Diyarbakır Regional Directorate',
+          'exp.tt.role': 'Network Infrastructure Intern | August 2025',
+          'exp.tt.li1': 'Supported network infrastructure operations covering 10 provinces under the regional directorate.',
+          'exp.tt.li2': 'Applied basic configuration processes for network devices such as routers, switches, and modems.',
+          'exp.tt.li3': 'Observed live infrastructure applications of the OSI model and TCP/IP protocol stack and contributed to fault detection processes.',
+          'skills.ai.title': 'Artificial Intelligence & Prompt Engineering',
+          'skills.ai.li1': 'I actively use AI-assisted tools, especially Cursor, in my software development processes to increase my code generation speed and efficiency.',
+          'skills.ai.li2': 'I optimize prompt engineering techniques for large language models (LLMs) according to my project needs.',
+          'skills.ai.li3': 'I receive architectural support from AI tools in web projects and data management processes I develop.',
+          'skills.web.title': 'Web Development (Frontend & Backend)',
+          'skills.web.li1': 'I build user-friendly, responsive, and performant web applications using Vue.js, HTML5, CSS3, and modern JavaScript (ES6+).',
+          'skills.web.li2': 'I design database architectures with PHP and MySQL, building user management and dynamic content sharing systems.',
+          'skills.web.li3': 'I implement modern, fast, and unique interface designs with the Tailwind CSS library.',
+          'skills.net.title': 'Network Infrastructure',
+          'skills.net.li1': 'I have practical experience in the basic configuration and management of critical network devices such as routers and switches.',
+          'skills.net.li2': 'I analyze live network applications of the OSI model and TCP/IP protocol structure and support fault detection processes.',
+          'skills.net.li3': 'I carry out infrastructure work on IP addressing dynamics and basic network topologies.',
+          'skills.stickerHint': 'hover or tap — what is it? 𖤐',
+          'skills.tipLabel': 'what is it?',
+          'skills.tipClose': 'Close',
+          'skills.tip.vue': 'A popular JavaScript framework for building modern, flexible, and user-friendly interfaces (UI).',
+          'skills.tip.php-mysql': 'The dynamic backend duo that powers websites behind the scenes and stores data securely.',
+          'skills.tip.python': 'A clean, powerful language and world leader in AI, data analysis, and automation workflows.',
+          'skills.tip.cpp-csharp': 'Powerful object-oriented languages at the core of OOP — from system architecture to game development.',
+          'skills.tip.html-css-js': 'The inseparable trio that builds a website\'s structure, visual design, and dynamic behavior.',
+          'skills.tip.network': 'The backbone of network infrastructure — protocols and devices that route packets, manage IP addresses, and measure system uptime.',
+          'guestbook.nameLabel': 'Your name or nickname',
+          'guestbook.messageLabel': 'Your note',
+          'guestbook.namePlaceholder': 'Your name or nickname... 𖤐',
+          'guestbook.messagePlaceholder': 'Leave a note about me... ',
+          'guestbook.submit': '[ save your note ]',
+          'guestbook.adminBar': '🔒 admin mode — you can delete notes',
+          'guestbook.adminLogout': 'logout',
+          'contact.text': 'You can always reach out for new projects, opportunities, or to exchange ideas on technical topics.',
+          'contact.emailBtn': '[ SEND ME AN EMAIL ]',
+          'contact.emailBody': 'hello:) I came from your portfolio:))',
+          'footer.text': '© 2026 Design & Code: Aleyna Tanık',
+          'modal.delete.title': 'are you sure?',
+          'modal.delete.text': "You're about to permanently delete this post-it note. No undo!",
+          'modal.delete.preview': '— you are deleting this note 📌',
+          'modal.delete.confirm': '[ Yes, Delete ]',
+          'modal.cancel': '[ Cancel ]',
+          'modal.admin.title': 'admin login',
+          'modal.admin.pinLabel': 'Admin password',
+          'modal.admin.text': 'Enter your password to manage notes — only you should know it 🔒',
+          'modal.admin.confirm': '[ Log In ]',
+          'modal.admin.errorWrong': 'Wrong password, try again 💋',
+          'modal.admin.errorEmpty': 'Password cannot be empty ✨',
+          'guestbook.deleteNote': 'Delete note',
+        },
+      };
+
+      let currentLang = localStorage.getItem(LANG_KEY) || 'tr';
+      if (!TRANSLATIONS[currentLang]) currentLang = 'tr';
+
+      function t(key) {
+        return TRANSLATIONS[currentLang][key] || TRANSLATIONS.tr[key] || key;
+      }
+
+      function getLang() {
+        return currentLang;
+      }
+
+      function updateEmailLink() {
+        const btn = document.getElementById('contact-email-btn');
+        if (!btn) return;
+        const body = encodeURIComponent(t('contact.emailBody'));
+        btn.href = 'https://mail.google.com/mail/?view=cm&fs=1&to=' + EMAIL + '&body=' + body;
+      }
+
+      function applyLanguage(lang) {
+        currentLang = lang;
+        localStorage.setItem(LANG_KEY, lang);
+        document.documentElement.lang = lang;
+
+        document.querySelectorAll('[data-lang]').forEach(function (el) {
+          const key = el.getAttribute('data-lang');
+          if (TRANSLATIONS[lang][key] !== undefined) {
+            el.textContent = TRANSLATIONS[lang][key];
+          }
+        });
+
+        document.querySelectorAll('[data-lang-placeholder]').forEach(function (el) {
+          const key = el.getAttribute('data-lang-placeholder');
+          if (TRANSLATIONS[lang][key] !== undefined) {
+            el.placeholder = TRANSLATIONS[lang][key];
+          }
+        });
+
+        document.querySelectorAll('[data-lang-aria]').forEach(function (el) {
+          const key = el.getAttribute('data-lang-aria');
+          if (TRANSLATIONS[lang][key] !== undefined) {
+            el.setAttribute('aria-label', TRANSLATIONS[lang][key]);
+            el.setAttribute('title', TRANSLATIONS[lang][key]);
+          }
+        });
+
+        document.querySelectorAll('[data-lang-alt]').forEach(function (el) {
+          const key = el.getAttribute('data-lang-alt');
+          if (TRANSLATIONS[lang][key] !== undefined) {
+            el.setAttribute('alt', TRANSLATIONS[lang][key]);
+          }
+        });
+
+        const langToggle = document.getElementById('lang-toggle');
+        if (langToggle) {
+          langToggle.textContent = t('lang.toggle');
+          langToggle.setAttribute('aria-label', t('lang.aria'));
+        }
+
+        document.title = t('meta.title');
+        const metaDesc = document.querySelector('meta[name="description"]');
+        if (metaDesc) metaDesc.setAttribute('content', t('meta.description'));
+
+        updateEmailLink();
+        window.dispatchEvent(new Event('sitelangchange'));
+        window.dispatchEvent(new Event('skilltiprefresh'));
+      }
+
+      function toggleLanguage() {
+        applyLanguage(currentLang === 'tr' ? 'en' : 'tr');
+      }
+
+      document.getElementById('lang-toggle').addEventListener('click', toggleLanguage);
+      applyLanguage(currentLang);
+
+      window.SiteI18n = { t: t, getLang: getLang, applyLanguage: applyLanguage };
+    })();
+  </script>
+
+  <script>
+    (function () {
+      const STORAGE_KEY = 'aleyna_guestbook_notes';
+      const ADMIN_SESSION_KEY = 'aleyna_guestbook_admin';
+      const ADMIN_PIN = 'aleyna2026';
+      const COLORS = ['cream', 'pink', 'yellow'];
+      const ROTATIONS = [-4, -2, -1, 1, 2, 3, 4];
+
+      const DEFAULT_NOTES = [
+        { id: 1, name: 'Berke', message: 'Portfolyon inanılmaz olmuş sevgilim! 🚀', color: 'pink', rotate: -3 },
+        { id: 2, name: 'Anonim', message: 'Burn Book estetiği tam kalbime dokundu 💋', color: 'cream', rotate: -1 },
+      ];
+
+      const nameInput = document.getElementById('guestbook-name');
+      const messageInput = document.getElementById('guestbook-message');
+      const pinBtn = document.getElementById('guestbook-pin-btn');
+      const notesContainer = document.getElementById('guestbook-notes');
+      const guestbookTitle = document.getElementById('guestbook-title');
+      const adminBar = document.getElementById('guestbook-admin-bar');
+      const adminLogoutBtn = document.getElementById('guestbook-admin-logout');
+      const deleteModal = document.getElementById('delete-modal');
+      const deleteModalPreview = document.getElementById('delete-modal-preview');
+      const deleteModalBackdrop = document.getElementById('delete-modal-backdrop');
+      const deleteModalCancel = document.getElementById('delete-modal-cancel');
+      const deleteModalConfirm = document.getElementById('delete-modal-confirm');
+      const adminModal = document.getElementById('admin-modal');
+      const adminModalPin = document.getElementById('admin-modal-pin');
+      const adminModalError = document.getElementById('admin-modal-error');
+      const adminModalBackdrop = document.getElementById('admin-modal-backdrop');
+      const adminModalCancel = document.getElementById('admin-modal-cancel');
+      const adminModalConfirm = document.getElementById('admin-modal-confirm');
+
+      let pendingDeleteId = null;
+
+      function updateBodyScrollLock() {
+        const anyOpen = deleteModal.classList.contains('is-open') || adminModal.classList.contains('is-open');
+        document.body.style.overflow = anyOpen ? 'hidden' : '';
+      }
+
+      function isAdmin() {
+        return sessionStorage.getItem(ADMIN_SESSION_KEY) === 'true';
+      }
+
+      function setAdmin(active) {
+        if (active) {
+          sessionStorage.setItem(ADMIN_SESSION_KEY, 'true');
+        } else {
+          sessionStorage.removeItem(ADMIN_SESSION_KEY);
+        }
+        updateAdminUI();
+        renderNotes(notes);
+      }
+
+      function updateAdminUI() {
+        adminBar.classList.toggle('is-active', isAdmin());
+      }
+
+      function openAdminModal() {
+        adminModalPin.value = '';
+        adminModalError.classList.remove('is-visible');
+        adminModal.classList.add('is-open');
+        adminModal.setAttribute('aria-hidden', 'false');
+        updateBodyScrollLock();
+        adminModalPin.focus();
+      }
+
+      function closeAdminModal() {
+        adminModal.classList.remove('is-open');
+        adminModal.setAttribute('aria-hidden', 'true');
+        adminModalPin.value = '';
+        adminModalError.classList.remove('is-visible');
+        updateBodyScrollLock();
+      }
+
+      function submitAdminLogin() {
+        const pin = adminModalPin.value.trim();
+        if (!pin) {
+          adminModalError.textContent = window.SiteI18n.t('modal.admin.errorEmpty');
+          adminModalError.classList.add('is-visible');
+          adminModalPin.focus();
+          return;
+        }
+        if (pin === ADMIN_PIN) {
+          setAdmin(true);
+          closeAdminModal();
+        } else {
+          adminModalError.textContent = window.SiteI18n.t('modal.admin.errorWrong');
+          adminModalError.classList.add('is-visible');
+          adminModalPin.value = '';
+          adminModalPin.focus();
+        }
+      }
+
+      function loadNotes() {
+        try {
+          const saved = localStorage.getItem(STORAGE_KEY);
+          if (saved) {
+            const parsed = JSON.parse(saved);
+            if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+          }
+        } catch (e) {
+          /* bozuk veri varsa varsayılana dön */
+        }
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(DEFAULT_NOTES));
+        return DEFAULT_NOTES.slice();
+      }
+
+      function saveNotes(notes) {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(notes));
+      }
+
+      function escapeHtml(text) {
+        return text
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#39;');
+      }
+
+      function renderNotes(notes) {
+        const admin = isAdmin();
+        const deleteLabel = window.SiteI18n ? window.SiteI18n.t('guestbook.deleteNote') : 'Notu sil';
+        notesContainer.innerHTML = notes
+          .slice()
+          .reverse()
+          .map(function (note) {
+            const deleteBtn = admin
+              ? '<button type="button" class="post-it-delete" data-id="' + note.id + '" aria-label="' + deleteLabel + '" title="' + deleteLabel + '">×</button>'
+              : '';
+            return (
+              '<article class="post-it post-it--' + note.color + '" style="transform: rotate(' + note.rotate + 'deg);">' +
+                deleteBtn +
+                '<p class="post-it-name">' + escapeHtml(note.name) + '</p>' +
+                '<p class="post-it-msg">' + escapeHtml(note.message) + '</p>' +
+              '</article>'
+            );
+          })
+          .join('');
+      }
+
+      function pickRandom(arr) {
+        return arr[Math.floor(Math.random() * arr.length)];
+      }
+
+      function openDeleteModal(noteId, noteName) {
+        pendingDeleteId = noteId;
+        const suffix = window.SiteI18n ? window.SiteI18n.t('modal.delete.preview') : '— bu notu siliyorsun 📌';
+        deleteModalPreview.textContent = noteName + ' ' + suffix;
+        deleteModal.classList.add('is-open');
+        deleteModal.setAttribute('aria-hidden', 'false');
+        updateBodyScrollLock();
+        deleteModalConfirm.focus();
+      }
+
+      function closeDeleteModal() {
+        pendingDeleteId = null;
+        deleteModal.classList.remove('is-open');
+        deleteModal.setAttribute('aria-hidden', 'true');
+        updateBodyScrollLock();
+      }
+
+      function confirmDelete() {
+        if (pendingDeleteId === null) return;
+        notes = notes.filter(function (note) { return note.id !== pendingDeleteId; });
+        saveNotes(notes);
+        renderNotes(notes);
+        closeDeleteModal();
+      }
+
+      let notes = loadNotes();
+      updateAdminUI();
+      renderNotes(notes);
+
+      let titleClickCount = 0;
+      let titleClickTimer;
+      guestbookTitle.addEventListener('click', function () {
+        titleClickCount++;
+        clearTimeout(titleClickTimer);
+        titleClickTimer = setTimeout(function () { titleClickCount = 0; }, 700);
+        if (titleClickCount >= 3) {
+          titleClickCount = 0;
+          openAdminModal();
+        }
+      });
+
+      adminModalCancel.addEventListener('click', closeAdminModal);
+      adminModalBackdrop.addEventListener('click', closeAdminModal);
+      adminModalConfirm.addEventListener('click', submitAdminLogin);
+      adminModalPin.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') submitAdminLogin();
+      });
+
+      adminLogoutBtn.addEventListener('click', function () {
+        setAdmin(false);
+      });
+
+      notesContainer.addEventListener('click', function (e) {
+        if (!isAdmin()) return;
+
+        const deleteBtn = e.target.closest('.post-it-delete');
+        if (!deleteBtn) return;
+
+        const noteId = Number(deleteBtn.dataset.id);
+        const note = notes.find(function (n) { return n.id === noteId; });
+        openDeleteModal(noteId, note ? note.name : 'Not');
+      });
+
+      deleteModalCancel.addEventListener('click', closeDeleteModal);
+      deleteModalBackdrop.addEventListener('click', closeDeleteModal);
+      deleteModalConfirm.addEventListener('click', confirmDelete);
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key !== 'Escape') return;
+        if (deleteModal.classList.contains('is-open')) closeDeleteModal();
+        else if (adminModal.classList.contains('is-open')) closeAdminModal();
+      });
+
+      pinBtn.addEventListener('click', function () {
+        const name = nameInput.value.trim();
+        const message = messageInput.value.trim();
+
+        if (!name || !message) {
+          (name ? messageInput : nameInput).focus();
+          return;
+        }
+
+        const newNote = {
+          id: Date.now(),
+          name: name,
+          message: message,
+          color: pickRandom(COLORS),
+          rotate: pickRandom(ROTATIONS),
+        };
+
+        notes.push(newNote);
+        saveNotes(notes);
+        renderNotes(notes);
+
+        nameInput.value = '';
+        messageInput.value = '';
+        nameInput.focus();
+      });
+
+      messageInput.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) {
+          pinBtn.click();
+        }
+      });
+
+      window.addEventListener('sitelangchange', function () {
+        renderNotes(notes);
+      });
+    })();
+  </script>
+
+  <script>
+    (function () {
+      const tipEl = document.getElementById('skill-tip');
+      const tipTextEl = document.getElementById('skill-tip-text');
+      const tipCloseBtn = document.getElementById('skill-tip-close');
+      const stickers = document.querySelectorAll('.skill-sticker[data-tip]');
+      const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+      let activeSticker = null;
+      let pinnedSticker = null;
+      let currentTipKey = null;
+
+      function tipText(key) {
+        return window.SiteI18n ? window.SiteI18n.t('skills.tip.' + key) : '';
+      }
+
+      function setActiveSticker(sticker) {
+        stickers.forEach(function (s) { s.classList.remove('is-active'); });
+        if (sticker) sticker.classList.add('is-active');
+        activeSticker = sticker;
+      }
+
+      function positionTip(sticker) {
+        if (!sticker || !tipEl) return;
+        const rect = sticker.getBoundingClientRect();
+        const tipRect = tipEl.getBoundingClientRect();
+        const gap = 10;
+        const pad = 12;
+        let top = rect.top - tipRect.height - gap;
+        let left = rect.left + rect.width / 2 - tipRect.width / 2;
+
+        if (top < pad) {
+          top = rect.bottom + gap;
+        }
+        left = Math.max(pad, Math.min(left, window.innerWidth - tipRect.width - pad));
+        top = Math.max(pad, Math.min(top, window.innerHeight - tipRect.height - pad));
+
+        tipEl.style.top = top + 'px';
+        tipEl.style.left = left + 'px';
+      }
+
+      function showTip(sticker, pin) {
+        const key = sticker.getAttribute('data-tip');
+        if (!key || !tipEl || !tipTextEl) return;
+
+        currentTipKey = key;
+        tipTextEl.textContent = tipText(key);
+        tipEl.classList.toggle('skill-tip--pink', sticker.classList.contains('skill-sticker--pink'));
+        setActiveSticker(sticker);
+        tipEl.classList.add('is-visible');
+        tipEl.setAttribute('aria-hidden', 'false');
+
+        requestAnimationFrame(function () {
+          positionTip(sticker);
+        });
+
+        if (pin) pinnedSticker = sticker;
+      }
+
+      function hideTip() {
+        if (!tipEl) return;
+        tipEl.classList.remove('is-visible', 'skill-tip--pink');
+        tipEl.setAttribute('aria-hidden', 'true');
+        setActiveSticker(null);
+        pinnedSticker = null;
+        currentTipKey = null;
+      }
+
+      stickers.forEach(function (sticker) {
+        sticker.addEventListener('click', function (e) {
+          e.stopPropagation();
+          if (pinnedSticker === sticker) {
+            hideTip();
+            return;
+          }
+          showTip(sticker, true);
+        });
+
+        if (canHover) {
+          sticker.addEventListener('mouseenter', function () {
+            if (!pinnedSticker) showTip(sticker, false);
+          });
+          sticker.addEventListener('mouseleave', function () {
+            if (!pinnedSticker) hideTip();
+          });
+        }
+      });
+
+      if (tipCloseBtn) {
+        tipCloseBtn.addEventListener('click', function (e) {
+          e.stopPropagation();
+          hideTip();
+        });
+      }
+
+      document.addEventListener('click', function (e) {
+        if (!tipEl || !tipEl.classList.contains('is-visible')) return;
+        if (tipEl.contains(e.target) || (activeSticker && activeSticker.contains(e.target))) return;
+        hideTip();
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') hideTip();
+      });
+
+      window.addEventListener('resize', function () {
+        if (activeSticker && tipEl.classList.contains('is-visible')) {
+          positionTip(activeSticker);
+        }
+      });
+
+      window.addEventListener('scroll', function () {
+        if (activeSticker && tipEl.classList.contains('is-visible')) {
+          positionTip(activeSticker);
+        }
+      }, true);
+
+      window.addEventListener('skilltiprefresh', function () {
+        if (currentTipKey && tipTextEl) {
+          tipTextEl.textContent = tipText(currentTipKey);
+        }
+      });
+    })();
+  </script>
+
+</body>
+</html>
