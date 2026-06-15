@@ -100,6 +100,13 @@
     }
     .nav-link:hover::after { width: 100%; }
 
+    .nav-link.is-active {
+      color: #e05295;
+    }
+    .nav-link.is-active::after {
+      width: 100%;
+    }
+
     @keyframes wiggle {
       0%, 100% { transform: rotate(-1.5deg); }
       50% { transform: rotate(1.5deg); }
@@ -166,6 +173,20 @@
       filter: drop-shadow(2px 4px 6px rgba(26, 26, 26, 0.12));
     }
 
+    .hero-now {
+      font-family: 'Caveat', cursive;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: rgba(224, 82, 149, 0.92);
+      line-height: 1.35;
+      transform: rotate(-1.5deg);
+      margin-top: -0.35rem;
+    }
+
+    @media (min-width: 1024px) {
+      .hero-now { font-size: 1.25rem; }
+    }
+
     .project-grid-pink {
       background-color: #fce8f0;
       background-image:
@@ -180,6 +201,16 @@
         linear-gradient(rgba(26, 26, 26, 0.07) 1px, transparent 1px),
         linear-gradient(90deg, rgba(26, 26, 26, 0.07) 1px, transparent 1px);
       background-size: 22px 22px;
+    }
+
+    .project-illus {
+      position: relative;
+      display: inline-block;
+      transform: rotate(2deg);
+    }
+
+    .project-illus .tape {
+      z-index: 10;
     }
 
     .project-badge {
@@ -217,6 +248,30 @@
     .project-card {
       border: 3px solid #1a1a1a;
       box-shadow: 5px 5px 0 rgba(26, 26, 26, 0.9);
+      transition: transform 0.28s ease, box-shadow 0.28s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 6px 6px 0 rgba(26, 26, 26, 0.9), 9px 9px 0 rgba(224, 82, 149, 0.72);
+    }
+
+    .project-tech-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-top: 1.5rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid rgba(26, 26, 26, 0.1);
+    }
+
+    .project-tech-row .skill-badge {
+      transform: rotate(var(--chip-rotate, 0deg));
+      transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+    }
+
+    .project-card:hover .project-tech-row .skill-badge {
+      background: #fce8f0;
     }
 
     .skill-badge {
@@ -539,6 +594,97 @@
       padding: 0.75rem 0.5rem 1rem;
     }
 
+    .guestbook-bento-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+      align-items: start;
+    }
+
+    @media (min-width: 768px) {
+      .guestbook-bento-grid {
+        grid-template-columns: minmax(0, 1.7fr) minmax(11.5rem, 0.95fr);
+        gap: 1.5rem;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .guestbook-bento-grid {
+        grid-template-columns: minmax(0, 1.85fr) minmax(13rem, 0.8fr);
+        gap: 1.75rem;
+      }
+    }
+
+    .visitor-counter-card {
+      position: relative;
+      transform: rotate(1.25deg);
+      transition: transform 0.28s ease, box-shadow 0.28s ease;
+    }
+
+    .visitor-counter-card:hover {
+      transform: rotate(0.5deg) translateY(-3px);
+    }
+
+    .visitor-counter-title {
+      transform: rotate(-0.75deg);
+      letter-spacing: 0.02em;
+    }
+
+    .visitor-counter-lcd {
+      background: #0a0a0a;
+      border: 3px solid #1a1a1a;
+      padding: 0.7rem 0.45rem;
+      display: flex;
+      justify-content: center;
+      gap: 0.3rem;
+      box-shadow: inset 0 0 14px rgba(255, 105, 180, 0.12), inset 0 2px 0 rgba(255, 255, 255, 0.04);
+      width: 100%;
+      max-width: 100%;
+      overflow: hidden;
+    }
+
+    .visitor-counter-lcd.is-loading .visitor-counter-digit {
+      color: #39ff14;
+      text-shadow: 0 0 6px rgba(57, 255, 20, 0.75), 0 0 2px #39ff14;
+      animation: visitor-digit-pulse 0.75s ease-in-out infinite;
+    }
+
+    .visitor-counter-digit {
+      flex: 0 0 auto;
+      width: 1.55rem;
+      height: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #111;
+      border: 2px solid #2a2a2a;
+      font-family: ui-monospace, 'Courier New', Courier, monospace;
+      font-size: 1.2rem;
+      font-weight: 700;
+      line-height: 1;
+      color: #ff69b4;
+      text-shadow: 0 0 8px rgba(255, 105, 180, 0.85), 0 0 2px #ff69b4;
+      transition: color 0.2s ease, text-shadow 0.2s ease;
+    }
+
+    @media (min-width: 640px) {
+      .visitor-counter-digit {
+        width: 1.7rem;
+        height: 2.15rem;
+        font-size: 1.3rem;
+      }
+    }
+
+    @keyframes visitor-digit-pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    .visitor-counter-tagline {
+      min-height: 1.25rem;
+      line-height: 1.35;
+    }
+
     @media (max-width: 639px) {
       .post-it {
         flex: 0 0 100%;
@@ -690,6 +836,35 @@
       }
     }
 
+    .nav-monogram {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      min-width: 2.35rem;
+      height: 2.35rem;
+      padding: 0 0.4rem;
+      font-family: 'Caveat', cursive;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #e05295;
+      background: #fff;
+      border: 2px solid #1a1a1a;
+      box-shadow: 2px 2px 0 rgba(224, 82, 149, 0.8);
+      transform: rotate(-3deg);
+      text-decoration: none;
+      line-height: 1;
+      transition: transform 0.2s, background 0.2s, color 0.2s, box-shadow 0.2s;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .nav-monogram:hover {
+      background: #ff69b4;
+      color: #fff;
+      transform: rotate(0deg) translateY(-2px);
+      box-shadow: 3px 3px 0 rgba(224, 82, 149, 0.9);
+    }
+
     .lang-btn {
       border: 2px solid #1a1a1a;
       background: #fff;
@@ -727,12 +902,14 @@
   <!-- NAV -->
   <nav class="sticky top-0 z-50 border-b border-burn/15 bg-cream/95 backdrop-blur-md">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between gap-3 sm:gap-4">
+      <a href="#top" class="nav-monogram" data-lang-aria="nav.monogramAria" aria-label="Ana sayfaya git" title="Ana sayfa">A𖤐</a>
       <div class="nav-links flex flex-wrap items-center justify-center flex-1 gap-3 sm:gap-8 text-xs sm:text-sm font-bold tracking-widest text-ink uppercase">
         <a href="#top" class="nav-link relative hover:text-burndeep transition-colors" data-lang="nav.home">Ana Sayfa</a>
         <a href="#hakkimda" class="nav-link relative hover:text-burndeep transition-colors" data-lang="nav.about">Hakkımda</a>
         <a href="#projeler" class="nav-link relative hover:text-burndeep transition-colors" data-lang="nav.projects">Projeler</a>
         <a href="#deneyim" class="nav-link relative hover:text-burndeep transition-colors" data-lang="nav.experience">Deneyim</a>
         <a href="#yetenekler" class="nav-link relative hover:text-burndeep transition-colors" data-lang="nav.skills">Yetenekler</a>
+        <a href="#guestbook" class="nav-link relative hover:text-burndeep transition-colors" data-lang="nav.guestbook">Notlar</a>
         <a href="#iletisim" class="nav-link relative hover:text-burndeep transition-colors" data-lang="nav.contact">İletişim</a>
       </div>
       <button type="button" id="lang-toggle" class="lang-btn" aria-label="Dili değiştir">[ EN ]</button>
@@ -757,10 +934,7 @@
     <div class="relative z-10 w-full flex flex-col lg:flex-row items-center lg:items-center gap-8 lg:gap-10 xl:gap-12">
       <!-- Sol: Polaroid -->
       <div class="relative shrink-0 flex justify-center lg:justify-start">
-        <p class="absolute -top-2 left-4 lg:left-0 font-hand text-burndeep/75 text-base sm:text-lg -rotate-3 select-none pointer-events-none z-10" data-lang="hero.thisIsMe">
-          işte ben ִ ࣪𖤐
-        </p>
-        <figure class="polaroid relative bg-[#fefefe] shadow-xl -rotate-2 border border-ink/5 mt-6 z-[1]"
+        <figure class="polaroid relative bg-[#fefefe] shadow-xl -rotate-2 border border-ink/5 z-[1]"
                 style="padding: 14px 14px 52px 14px;">
           <div class="tape top-0 left-1/2 -translate-x-1/2 -translate-y-1/2" style="width: 90px;"></div>
           <svg class="paperclip" viewBox="0 0 24 56" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -790,6 +964,10 @@
 
         <p class="font-serif text-center lg:text-left text-sm sm:text-base lg:text-lg text-ink leading-snug sm:leading-relaxed font-semibold relative z-[1]" data-lang="hero.tagline">
           Yapay Zeka Destekli Geliştirme Odaklı Yazılım Mühendisi Adayı &amp; Arayüz Tasarımcısı
+        </p>
+
+        <p class="hero-now text-center lg:text-left relative z-[1]" data-lang="hero.now">
+          şu an dersler ile commit'ler arasında gidip geliyorum — yeni fikirler peşindeyim 𖤐
         </p>
 
         <div class="flex flex-wrap justify-center lg:justify-start gap-3 relative z-[1]">
@@ -866,6 +1044,11 @@
                 <li data-lang="project1.li2">Kullanıcı dostu arayüz tasarımı ile dinamik web sitesi analiz modülünü (URL/domain bazlı ping testi) entegre ettim.</li>
                 <li data-lang="project1.li3">Geliştirme sürecinde yapay zeka destekli araçlar kullanarak verimliliği artırdım.</li>
               </ul>
+              <div class="project-tech-row" aria-label="Teknolojiler">
+                <span class="skill-badge" style="--chip-rotate: -1.5deg">Python</span>
+                <span class="skill-badge" style="--chip-rotate: 1deg">Ping</span>
+                <span class="skill-badge" style="--chip-rotate: -0.5deg">Dashboard</span>
+              </div>
             </div>
           </div>
         </article>
@@ -894,17 +1077,25 @@
                 <li data-lang="project2.li3">Geliştirme sürecinde istek optimizasyonu ve veritabanı hızlandırma çalışmalarına odaklandım.</li>
                 <li data-lang="project2.li4">Yapay zeka destekli araçlardan faydalanarak süreci yönettim.</li>
               </ul>
+              <div class="project-tech-row" aria-label="Teknolojiler">
+                <span class="skill-badge" style="--chip-rotate: 1.5deg">Vue.js</span>
+                <span class="skill-badge" style="--chip-rotate: -1deg">PHP</span>
+                <span class="skill-badge" style="--chip-rotate: 0.5deg">MySQL</span>
+              </div>
             </div>
 
             <!-- Görsel -->
             <div class="project-grid-neutral relative flex items-center justify-center p-8 sm:p-12 min-h-[280px] sm:min-h-[340px] order-1 md:order-2">
-              <img
-                src="hey.png"
-                alt="n.otlan — çalışma masasında bilgisayar başında çizim"
-                data-lang-alt="project2.imgAlt"
-                class="w-full max-w-[15rem] sm:max-w-xs lg:max-w-sm h-auto object-contain drop-shadow-md rotate-[2deg] select-none"
-                draggable="false"
-              />
+              <figure class="project-illus">
+                <div class="tape top-0 left-1/2 -translate-x-1/2 -translate-y-1/2" style="width: 72px;"></div>
+                <img
+                  src="hey.png"
+                  alt="n.otlan — çalışma masasında bilgisayar başında çizim"
+                  data-lang-alt="project2.imgAlt"
+                  class="w-full max-w-[15rem] sm:max-w-xs lg:max-w-sm h-auto object-contain drop-shadow-md select-none"
+                  draggable="false"
+                />
+              </figure>
             </div>
           </div>
         </article>
@@ -1046,38 +1237,58 @@
         bana bir not bırak
       </h2>
 
-      <article class="project-card bg-cream p-6 sm:p-8 lg:p-10 max-w-3xl mx-auto"
-               style="box-shadow: 6px 6px 0 rgba(224, 82, 149, 0.85);">
-        <div class="space-y-4">
-          <div>
-            <label for="guestbook-name" class="sr-only" data-lang="guestbook.nameLabel">Adın veya nickname</label>
-            <input
-              type="text"
-              id="guestbook-name"
-              class="guestbook-input"
-              data-lang-placeholder="guestbook.namePlaceholder"
-              placeholder="Adın veya Nickname... 𖤐"
-              maxlength="40"
-            />
+      <div class="guestbook-bento-grid max-w-6xl mx-auto">
+        <article class="project-card bg-cream p-6 sm:p-8 lg:p-10"
+                 style="box-shadow: 6px 6px 0 rgba(224, 82, 149, 0.85);">
+          <div class="space-y-4">
+            <div>
+              <label for="guestbook-name" class="sr-only" data-lang="guestbook.nameLabel">Adın veya nickname</label>
+              <input
+                type="text"
+                id="guestbook-name"
+                class="guestbook-input"
+                data-lang-placeholder="guestbook.namePlaceholder"
+                placeholder="Adın veya Nickname... 𖤐"
+                maxlength="40"
+              />
+            </div>
+            <div>
+              <label for="guestbook-message" class="sr-only" data-lang="guestbook.messageLabel">Notun</label>
+              <textarea
+                id="guestbook-message"
+                rows="4"
+                class="guestbook-input resize-none"
+                data-lang-placeholder="guestbook.messagePlaceholder"
+                placeholder="Benimle ilgili bir not bırak... "
+                maxlength="60"
+              ></textarea>
+            </div>
+            <button type="button" id="guestbook-pin-btn" class="guestbook-pin-btn w-full sm:w-auto" data-lang="guestbook.submit">
+              [ notunu kaydet ]
+            </button>
           </div>
-          <div>
-            <label for="guestbook-message" class="sr-only" data-lang="guestbook.messageLabel">Notun</label>
-            <textarea
-              id="guestbook-message"
-              rows="4"
-              class="guestbook-input resize-none"
-              data-lang-placeholder="guestbook.messagePlaceholder"
-              placeholder="Benimle ilgili bir not bırak... "
-              maxlength="60"
-            ></textarea>
-          </div>
-          <button type="button" id="guestbook-pin-btn" class="guestbook-pin-btn w-full sm:w-auto" data-lang="guestbook.submit">
-            [ notunu kaydet ]
-          </button>
-        </div>
-      </article>
+        </article>
 
-      <div id="guestbook-admin-bar" class="guestbook-admin-bar max-w-3xl mx-auto">
+        <article id="visitor-counter" class="visitor-counter-card project-card bg-cream p-5 sm:p-6 flex flex-col items-center text-center gap-3 sm:gap-4"
+                 style="box-shadow: 6px 6px 0 rgba(224, 82, 149, 0.85);">
+          <div class="tape top-0 right-5 sm:right-6 -translate-y-1/2 pointer-events-none" style="width: 52px; transform: rotate(4deg);"></div>
+          <h3 class="visitor-counter-title font-hand text-[1.55rem] sm:text-[1.7rem] text-burndeep leading-tight" data-lang="counter.title">
+            günlüğe göz atanlar
+          </h3>
+          <div class="visitor-counter-lcd is-loading" id="visitor-counter-display" role="status" aria-live="polite" aria-busy="true" data-lang-aria="counter.aria">
+            <span class="visitor-counter-digit">─</span>
+            <span class="visitor-counter-digit">─</span>
+            <span class="visitor-counter-digit">─</span>
+            <span class="visitor-counter-digit">─</span>
+            <span class="visitor-counter-digit">─</span>
+          </div>
+          <p class="visitor-counter-tagline font-sans text-xs sm:text-sm font-semibold text-fume" id="visitor-counter-tagline" data-lang="counter.loading">
+            yükleniyor...
+          </p>
+        </article>
+      </div>
+
+      <div id="guestbook-admin-bar" class="guestbook-admin-bar max-w-6xl mx-auto mt-6">
         <span data-lang="guestbook.adminBar">🔒 yönetici modu — notları silebilirsin</span>
         <button type="button" id="guestbook-admin-logout" class="guestbook-admin-logout" data-lang="guestbook.adminLogout">çıkış</button>
       </div>
@@ -1162,15 +1373,17 @@
           'meta.description': 'Aleyna Tanık — Yazılım Mühendisliği öğrencisi portföy sitesi.',
           'nav.about': 'Hakkımda',
           'nav.home': 'Ana Sayfa',
+          'nav.monogramAria': 'Ana sayfaya git',
           'nav.projects': 'Projeler',
           'nav.experience': 'Deneyim',
           'nav.skills': 'Yetenekler',
+          'nav.guestbook': 'Notlar',
           'nav.contact': 'İletişim',
           'lang.toggle': '[ EN ]',
           'lang.aria': 'İngilizceye geç',
-          'hero.thisIsMe': 'işte ben ִ ࣪𖤐',
           'hero.contactAria': 'İletişim bölümüne git',
           'hero.tagline': 'Yapay Zeka Destekli Geliştirme Odaklı Yazılım Mühendisi Adayı & Arayüz Tasarımcısı',
+          'hero.now': "şu an dersler ile commit'ler arasında gidip geliyorum — yeni fikirler peşindeyim 𖤐",
           'section.about': 'hakkımda',
           'section.projects': 'projeler',
           'section.experience': 'deneyim & eğitim',
@@ -1247,21 +1460,27 @@
           'modal.admin.errorWrong': 'Şifre yanlış, tekrar dene 💋',
           'modal.admin.errorEmpty': 'Şifre boş olamaz ✨',
           'guestbook.deleteNote': 'Notu sil',
+          'counter.title': 'günlüğe göz atanlar',
+          'counter.loading': 'yükleniyor...',
+          'counter.aria': 'Ziyaretçi sayacı',
+          'counter.error': 'sayaç dinleniyor… 💤',
         },
         en: {
           'meta.title': 'Aleyna Tanık — Portfolio',
           'meta.description': 'Aleyna Tanık — Software Engineering student portfolio.',
           'nav.about': 'About',
           'nav.home': 'Home',
+          'nav.monogramAria': 'Go to home',
           'nav.projects': 'Projects',
           'nav.experience': 'Experience',
           'nav.skills': 'Skills',
+          'nav.guestbook': 'Notes',
           'nav.contact': 'Contact',
           'lang.toggle': '[ TR ]',
           'lang.aria': 'Switch to Turkish',
-          'hero.thisIsMe': 'this is me ִ ࣪𖤐',
           'hero.contactAria': 'Go to contact section',
           'hero.tagline': 'AI-Assisted Development Focused Software Engineering Candidate & UI Designer',
+          'hero.now': 'right now bouncing between lectures and commits — chasing new ideas 𖤐',
           'section.about': 'about',
           'section.projects': 'projects',
           'section.experience': 'experience & education',
@@ -1338,6 +1557,10 @@
           'modal.admin.errorWrong': 'Wrong password, try again 💋',
           'modal.admin.errorEmpty': 'Password cannot be empty ✨',
           'guestbook.deleteNote': 'Delete note',
+          'counter.title': 'peeked at the diary',
+          'counter.loading': 'loading...',
+          'counter.aria': 'Visitor counter',
+          'counter.error': 'counter is resting… 💤',
         },
       };
 
@@ -1416,6 +1639,41 @@
       applyLanguage(currentLang);
 
       window.SiteI18n = { t: t, getLang: getLang, applyLanguage: applyLanguage };
+    })();
+  </script>
+
+  <script>
+    (function () {
+      const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
+      const sectionIds = ['top', 'hakkimda', 'projeler', 'deneyim', 'yetenekler', 'guestbook', 'iletisim'];
+      const offset = 100;
+
+      function updateActiveNav() {
+        let current = sectionIds[0];
+        const scrollY = window.scrollY + offset;
+
+        sectionIds.forEach(function (id) {
+          const el = document.getElementById(id);
+          if (el && el.offsetTop <= scrollY) {
+            current = id;
+          }
+        });
+
+        navLinks.forEach(function (link) {
+          const href = link.getAttribute('href');
+          const isActive = href === '#' + current;
+          link.classList.toggle('is-active', isActive);
+          if (isActive) {
+            link.setAttribute('aria-current', 'page');
+          } else {
+            link.removeAttribute('aria-current');
+          }
+        });
+      }
+
+      window.addEventListener('scroll', updateActiveNav, { passive: true });
+      window.addEventListener('resize', updateActiveNav);
+      updateActiveNav();
     })();
   </script>
 
@@ -1797,6 +2055,162 @@
           tipTextEl.textContent = tipText(currentTipKey);
         }
       });
+    })();
+  </script>
+
+  <script>
+    (function () {
+      const COUNTER_KEY = 'aleynatanik-netlify-app-visits';
+      const SESSION_KEY = 'aleyna_visitor_counted';
+      const DIGIT_COUNT = 5;
+
+      const HIT_URLS = [
+        'https://api.countapi.xyz/hit/aleynatanik.netlify.app/visits',
+        'https://countapi.mileshilliard.com/api/v1/hit/' + COUNTER_KEY,
+      ];
+      const GET_URLS = [
+        'https://api.countapi.xyz/get/aleynatanik.netlify.app/visits',
+        'https://countapi.mileshilliard.com/api/v1/get/' + COUNTER_KEY,
+      ];
+
+      const displayEl = document.getElementById('visitor-counter-display');
+      const taglineEl = document.getElementById('visitor-counter-tagline');
+      if (!displayEl || !taglineEl) return;
+
+      let loadingTimer = null;
+      let currentCount = null;
+      let loadingStep = 0;
+
+      function getLang() {
+        return window.SiteI18n && window.SiteI18n.getLang ? window.SiteI18n.getLang() : 'tr';
+      }
+
+      function t(key) {
+        return window.SiteI18n && window.SiteI18n.t ? window.SiteI18n.t(key) : key;
+      }
+
+      function formatTagline(count) {
+        if (getLang() === 'en') return "you're visitor #" + count + '! 💖';
+        return count + '. ziyaretçimsin! 💖';
+      }
+
+      function clearLoadingTimer() {
+        if (loadingTimer) {
+          clearInterval(loadingTimer);
+          loadingTimer = null;
+        }
+      }
+
+      function renderLoading() {
+        clearLoadingTimer();
+        currentCount = null;
+        displayEl.classList.add('is-loading');
+        displayEl.setAttribute('aria-busy', 'true');
+        taglineEl.textContent = t('counter.loading');
+
+        const digits = [];
+        displayEl.innerHTML = '';
+        for (let i = 0; i < DIGIT_COUNT; i++) {
+          const digit = document.createElement('span');
+          digit.className = 'visitor-counter-digit';
+          digit.textContent = '─';
+          displayEl.appendChild(digit);
+          digits.push(digit);
+        }
+
+        loadingStep = 0;
+        loadingTimer = setInterval(function () {
+          loadingStep = (loadingStep + 1) % (DIGIT_COUNT + 1);
+          digits.forEach(function (digit, index) {
+            digit.textContent = index < loadingStep ? '·' : '─';
+          });
+        }, 320);
+      }
+
+      function renderCount(count) {
+        clearLoadingTimer();
+        currentCount = count;
+        displayEl.classList.remove('is-loading');
+        displayEl.setAttribute('aria-busy', 'false');
+
+        const padded = String(Math.max(0, Math.floor(count)))
+          .padStart(DIGIT_COUNT, '0')
+          .slice(-DIGIT_COUNT);
+
+        displayEl.innerHTML = '';
+        for (let i = 0; i < padded.length; i++) {
+          const digit = document.createElement('span');
+          digit.className = 'visitor-counter-digit';
+          digit.textContent = padded.charAt(i);
+          displayEl.appendChild(digit);
+        }
+
+        taglineEl.textContent = formatTagline(count);
+      }
+
+      function parseCount(data) {
+        if (typeof data === 'number') return data;
+        if (!data || typeof data !== 'object') return null;
+        if (typeof data.value === 'number') return data.value;
+        if (typeof data.data === 'number') return data.data;
+        return null;
+      }
+
+      function fetchCounter(url) {
+        return fetch(url, { method: 'GET', cache: 'no-store' })
+          .then(function (res) {
+            if (!res.ok) throw new Error('bad status');
+            return res.json();
+          })
+          .then(function (data) {
+            const value = parseCount(data);
+            if (value === null) throw new Error('bad payload');
+            return value;
+          });
+      }
+
+      function tryUrls(urls) {
+        return urls.reduce(function (chain, url) {
+          return chain.catch(function () {
+            return fetchCounter(url);
+          });
+        }, Promise.reject());
+      }
+
+      function loadCounter() {
+        renderLoading();
+        const alreadyCounted = sessionStorage.getItem(SESSION_KEY) === '1';
+        const urls = alreadyCounted ? GET_URLS : HIT_URLS;
+
+        tryUrls(urls)
+          .then(function (count) {
+            if (!alreadyCounted) sessionStorage.setItem(SESSION_KEY, '1');
+            renderCount(count);
+          })
+          .catch(function () {
+            clearLoadingTimer();
+            displayEl.classList.remove('is-loading');
+            displayEl.setAttribute('aria-busy', 'false');
+            displayEl.innerHTML = '';
+            for (let i = 0; i < DIGIT_COUNT; i++) {
+              const digit = document.createElement('span');
+              digit.className = 'visitor-counter-digit';
+              digit.textContent = '─';
+              displayEl.appendChild(digit);
+            }
+            taglineEl.textContent = t('counter.error');
+          });
+      }
+
+      window.addEventListener('sitelangchange', function () {
+        if (currentCount !== null) {
+          taglineEl.textContent = formatTagline(currentCount);
+        } else if (displayEl.getAttribute('aria-busy') === 'true') {
+          taglineEl.textContent = t('counter.loading');
+        }
+      });
+
+      loadCounter();
     })();
   </script>
 
